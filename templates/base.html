@@ -7,11 +7,12 @@
 </head>
 
 <body>
+    {%include 'partial/nav.html'%}
     <main class="container mt-4 mb-4">
-        {% block content %}{% endblock %}
+        {% block content %}
+        {% endblock %}
+
     </main>
-
-    {% include 'partial/footer.html' %}
-
 </body>
+{% include 'partial/footer.html' %}
 </html>
