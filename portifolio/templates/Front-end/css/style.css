@@ -172,6 +172,36 @@ section{
     box-shadow: var(--box-shadow-inset);
 }
 
+.togle-whatsapp{
+    position: fixed;
+    bottom:1.5rem; right: 2rem;
+    z-index: 1000;
+    height: 5rem;
+    width: 5rem;
+    line-height: 5rem;
+    font-size: 5rem;
+}
+
+.togle-whatsapp a{
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    color:var(--black);
+    background: var(--bg-color);
+}
+
+.togle-whatsapp a:hover{
+    color:var(--green);
+    box-shadow: var(--box-shadow-inset);
+}
+
+
+.togle-whatsapp a:hover{
+    box-shadow: var(--box-shadow-inset);
+    color:var(--green);
+}
+
 .home{
     display: flex;
     flex-flow: column;
