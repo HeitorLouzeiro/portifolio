@@ -1,21 +1,19 @@
-
     <!-- home section starts  -->
 
     <section class="home" id="home">
 
         <div class="content">
-            <h3>Heitor Louzeiro</h3>
-            <p>Este é o meu Portfólio Pessoal,
-                aqui você pode encontrar um pouco mais sobre mim e meu trabalho.</p>
+        {% for personaldata in personaldatas %}
+        <h3>{{personaldata.name}}</h3>
+        <p>{{personaldata.title}}</p>
+        {% endfor %}
             <a href="#" class="btn">download CV</a>
         </div>
 
         <div class="share">
-            <a href="#" class="fab fa-facebook-f"></a>
-            <a href="#" class="fab fa-twitter"></a>
-            <a href="#" class="fab fa-instagram"></a>
-            <a href="#" class="fab fa-linkedin"></a>
-            <a href="#" class="fab fa-pinterest"></a>
+            {% for socialmedia in socialmedias %}
+            <a href="{{socialmedia.link}}" class="{{socialmedia.icon}}" target="_blank"></a>
+            {% endfor %}
         </div>
 
     </section>

@@ -4,9 +4,11 @@
     <header class="header">
 
         <div class="user">
+            {% for personaldata in personaldatas %}
             <img src="portifolio/templates/Front-end/image/user-img.png" alt="">
-            <h3>Heitor Louzeiro</h3>
-            <p>Backend developer</p>
+            <h3>{{personaldata.name}}</h3>
+            <p>{{personaldata.profession}}</p>
+            {%endfor%}
         </div>
 
         <nav class="navbar">
@@ -17,7 +19,6 @@
             <a href="#portfolio">portfolio</a>
             <a href="#contact">contact</a>
         </nav>
-
     </header>
 
     <!-- header section ends -->
@@ -25,9 +26,12 @@
     <div id="menu-btn" class="fas fa-bars"></div>
 
     <!-- theme toggler  -->
-
+    {% if not personal.whatsapp %}
     <div id="theme-toggler" class="fas fa-moon"></div>
     <div class="togle-whatsapp">
-        <a href="https://api.whatsapp.com/send?phone=5589999054536" class="fab fa-whatsapp" target="blank">
-        </a>
+        {% for personaldata in personaldatas %}
+            <a href="{{personaldata.whatsapp}}" class="fab fa-whatsapp" target="blank">
+            </a>
+        {%endfor%}
     </div>
+    {% endif %}}

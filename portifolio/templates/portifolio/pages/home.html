@@ -1,5 +1,7 @@
 {%extends 'base.html'%}
+<body>
 {% block content %}
+    {% include 'portifolio/partial/_nav.html' %}
     {% include 'portifolio/partial/_home.html' %}
     {% include 'portifolio/partial/_about.html' %}
     {% include 'portifolio/partial/_curriculum.html' %}
@@ -7,3 +9,4 @@
     {% include 'portifolio/partial/_portifolio.html' %}
     {% include 'portifolio/partial/_contact.html' %}
 {% endblock content %}
+</body>
