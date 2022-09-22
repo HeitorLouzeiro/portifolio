@@ -6,97 +6,29 @@
         <h1 class="heading"> my <span>portfolio</span> </h1>
 
         <div class="box-container">
-
-            <div class="box">
-                <img src="image/img-1.jpg" alt="">
-                <div class="content">
-                    <h3>project 01</h3>
-                    <div class="link">
-                        <a href="#">
-                            <i class="fas fa-laptop"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fab fa-github"></i>
-                        </a>
+            {% for card in cards %}
+                {% if card.section == '4' %}
+                    <div class="box">
+                        <img src="image/img-1.jpg" alt="">
+                        <div class="content">
+                            <h3>{{card.title}}</h3>
+                            <div class="link">
+                                {% if card.linkdeploy %}
+                                    <a href="{{card.linkdeploy}}" target="blank">
+                                        <i class="fas fa-laptop"></i>
+                                    </a>
+                                {% endif %}
+                                                        
+                                {% if card.linkgithub %}
+                                    <a href="{{card.linkgithub}}" target="blank">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="box">
-                <img src="image/img-2.jpg" alt="">
-                <div class="content">
-                    <h3>project 02</h3>
-                    <div class="link">
-                        <a href="#">
-                            <i class="fas fa-laptop"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="box">
-                <img src="image/img-3.jpg" alt="">
-                <div class="content">
-                    <h3>project 03</h3>
-                    <div class="link">
-                        <a href="#">
-                            <i class="fas fa-laptop"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="box">
-                <img src="image/img-4.jpg" alt="">
-                <div class="content">
-                    <h3>project 04</h3>
-                    <div class="link">
-                        <a href="#">
-                            <i class="fas fa-laptop"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="box">
-                <img src="image/img-5.jpg" alt="">
-                <div class="content">
-                    <h3>project 05</h3>
-                    <div class="link">
-                        <a href="#">
-                            <i class="fas fa-laptop"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="box">
-                <img src="image/img-6.jpg" alt="">
-                <div class="content">
-                    <h3>project 06</h3>
-                    <div class="link">
-                        <a href="#">
-                            <i class="fas fa-laptop"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
+                {% endif %}
+            {% endfor %}
         </div>
 
     </section>
