@@ -9,10 +9,11 @@
         {% endfor %}
             <a href="#" class="btn">download CV</a>
         </div>
-
         <div class="share">
             {% for socialmedia in socialmedias %}
-            <a href="{{socialmedia.link}}" class="{{socialmedia.icon}}" target="_blank"></a>
+                {% if socialmedia.skills == False %}
+                    <a href="{{socialmedia.link}}" class="{{socialmedia.icon}}" target="_blank"></a>
+                {% endif %}
             {% endfor %}
         </div>
 

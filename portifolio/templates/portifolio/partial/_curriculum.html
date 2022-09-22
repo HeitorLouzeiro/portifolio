@@ -12,34 +12,23 @@
 
             Skills
         </h3>
-
         <div class="share">
-            <a href="#" class="fab"><img src="https://img.icons8.com/color/48/000000/html-5--v1.png" /></a>
-            <a href="#" class="fab"><img src="https://img.icons8.com/color/48/000000/css3.png" /></a>
-            <a href="#" class="fab"><img src="https://img.icons8.com/color/48/000000/bootstrap.png" /></a>
-            <a href="#" class="fab"><img src="https://img.icons8.com/color/48/000000/github.png" /></a>
-            <a href="#" class="fab"><img src="https://img.icons8.com/color/48/000000/python--v1.png" /></a>
-            <a href="#" class="fab"><img src="https://img.icons8.com/ios/48/000000/django.png" /></a>
-            <a href="#" class="fab"><img src="https://img.icons8.com/color/48/000000/mysql-logo.png" /></a>
-            <a href="#" class="fab"><img src="https://img.icons8.com/color/48/000000/heroku.png" /></a>
-        </div>
-        <div class="row">
-            <div class="box-container">
-                <div class="box">
-                    <h3>15+</h3>
-                    <p>Repositorio no GitHub</p>
-                </div>
-                <div class="box">
-                    <h3>160+</h3>
-                    <p>Jornada de estudo sobre progamação</p>
-                </div>
-                <div class="box">
-                    <h3>160+</h3>
-                    <p>Commits no GitHub(2022)</p>
-                </div>
-            </div>
-        </div>
+            {% for socialmedia in socialmedias %}
+                {% if socialmedia.skills == True %}
+                    <a href="{{socialmedia.link}}" class="fab">
+                        <img src="{{socialmedia.icon}}" target="_blank">
+                    </a>
+                    {% comment %} <a href="#" class="fab"><img src="https://img.icons8.com/color/48/000000/css3.png" /></a>
+                    <a href="#" class="fab"><img src="https://img.icons8.com/color/48/000000/bootstrap.png" /></a>
+                    <a href="#" class="fab"><img src="https://img.icons8.com/color/48/000000/github.png" /></a>
+                    <a href="#" class="fab"><img src="https://img.icons8.com/color/48/000000/python--v1.png" /></a>
+                    <a href="#" class="fab"><img src="https://img.icons8.com/ios/48/000000/django.png" /></a>
+                    <a href="#" class="fab"><img src="https://img.icons8.com/color/48/000000/mysql-logo.png" /></a>
+                    <a href="#" class="fab"><img src="https://img.icons8.com/color/48/000000/heroku.png" /></a> {% endcomment %}
+                {%endif%}
+            {% endfor %}
 
+        </div>
         <h3 class="heading">
             <!-- <img src="https://img.icons8.com/dotty/50/000000/education.png" /> -->
             <i class="fas fa-school"></i>

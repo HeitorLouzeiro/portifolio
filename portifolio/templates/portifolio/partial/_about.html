@@ -23,12 +23,10 @@
             </div>
 
             <div class="content">
-                <h3>Eu sou <span>Heitor Louzeiro</span></h3>
-                <p>Desenvolvedor de Software apaixonado por soluçoes simples para problemas dificeis.
-                    Entusiasta dos metodos ageis, de ambientes flexiveis e propensos a entrega continua.
-                    Aceite novos desafios e resolva-os.
-                </p>
-                <p></p>
+                {% for aboutdata in about %}
+                    <h3>{{aboutdata.title}}</h3>
+                    <p>{{aboutdata.aboutme}}</p>
+                {% endfor %}                
                 <a href="#" class="btn">contact me</a>
             </div>
 
