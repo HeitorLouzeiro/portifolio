@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import About, Card, PersonalData, SocialMedia
+from .models import About, BarProgress, Card, PersonalData, SocialMedia
 
 # Register your models here.
 
@@ -15,6 +15,11 @@ class AboutInlines(admin.TabularInline):
     extra = 1
 
 
+class BarProgressInlines(admin.TabularInline):
+    model = BarProgress
+    extra = 1
+
+
 class CardInlines(admin.TabularInline):
     model = Card
     extra = 1
@@ -26,6 +31,7 @@ class PersonalDataAdmin(admin.ModelAdmin):
     inlines = [
         SocialMediaInlines,
         AboutInlines,
+        BarProgressInlines,
         CardInlines,
     ]
 

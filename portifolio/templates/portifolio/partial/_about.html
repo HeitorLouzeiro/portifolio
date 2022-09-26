@@ -1,53 +1,46 @@
+<!-- about section starts  -->
 
-    <!-- about section starts  -->
+<section class="about" id="about">
 
-    <section class="about" id="about">
-
-        <h1 class="heading"> <span>about</span> me </h1>
-        <div class="row">
-            <div class="box-container">
-                {% for card in cards %}
-                    {% if card.section == '1' %}
-                    <div class="box">
-                        <h3>{{card.title}}</h3>
-                        <p>{{card.subtitle}}</p>
-                    </div>
-                    {% endif %}
-                {% endfor %}
+    <h1 class="heading"> <span>about</span> me </h1>
+    <div class="row">
+        <div class="box-container">
+            {% for card in cards %}
+            {% if card.section == '1' %}
+            <div class="box">
+                <h3>{{card.title}}</h3>
+                <p>{{card.subtitle}}</p>
             </div>
-
-            <div class="content">
-                {% for aboutdata in about %}
-                    <h3>{{aboutdata.title}}</h3>
-                    <p>{{aboutdata.aboutme}}</p>
-                {% endfor %}                
-                <a href="#" class="btn">contact me</a>
-            </div>
-
+            {% endif %}
+            {% endfor %}
         </div>
 
-        <div class="row">
-
-            <div class="progress">
-                <h3> web design <span>90%</span> </h3>
-                <div class="bar bar-1-1"><span></span></div>
-                <h3> graphic design <span>75%</span> </h3>
-                <div class="bar bar-1-2"><span></span></div>
-                <h3> UI/UX design <span>80%</span> </h3>
-                <div class="bar bar-1-3"><span></span></div>
-            </div>
-
-            <div class="progress">
-                <h3> HTML <span>95%</span> </h3>
-                <div class="bar bar-2-1"><span></span></div>
-                <h3> CSS <span>80%</span> </h3>
-                <div class="bar bar-2-2"><span></span></div>
-                <h3> javascript <span>65%</span> </h3>
-                <div class="bar bar-2-3"><span></span></div>
-            </div>
-
+        <div class="content">
+            {% for aboutdata in about %}
+            <h3>{{aboutdata.title}}</h3>
+            <p>{{aboutdata.aboutme}}</p>
+            {% endfor %}
+            <a href="#" class="btn">contact me</a>
         </div>
 
-    </section>
+    </div>
 
-    <!-- about section ends -->
+    <div class="row">
+        <div class="box-progress">
+            {% for barprogress in barprogress %}            
+            <div class="progress">
+                <h3>{{barprogress.title}} <span>{{barprogress.progress}}</span></h3>
+                <div class="bar">
+                    <span style="width:{{barprogress.progress}}"></span>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+
+
+</section>
+
+<!-- about section ends -->

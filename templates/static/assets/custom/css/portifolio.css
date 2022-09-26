@@ -303,8 +303,14 @@ section{
     padding-top: 2rem;
 }
 
+.about .row .box-progress{
+    flex: 1 1 40rem;
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
 .about .row .progress{
-    flex:1 1 40rem;
+    flex:40%;
 }
 
 .about .row .progress h3{
@@ -325,35 +331,13 @@ section{
 }
 
 .about .row .progress .bar span{
-    display: block;
+    display: flex;
     height: 100%;
     background: var(--green);
     border-radius: 5rem;
 }
 
-.about .row .progress .bar-1-1 span{
-    width: 90%;
-}
 
-.about .row .progress .bar-1-2 span{
-    width: 75%;
-}
-
-.about .row .progress .bar-1-3 span{
-    width: 80%;
-}
-
-.about .row .progress .bar-2-1 span{
-    width: 95%;
-}
-
-.about .row .progress .bar-2-2 span{
-    width: 89%;
-}
-
-.about .row .progress .bar-2-3 span{
-    width: 65%;
-}
 .curriculo{
     display:flex;
     flex-flow: column;

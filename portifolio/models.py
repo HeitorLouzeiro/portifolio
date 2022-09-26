@@ -26,6 +26,15 @@ class SocialMedia(models.Model):
         return self.name
 
 
+class BarProgress(models.Model):
+    title = models.CharField(max_length=50)
+    progress = models.CharField(max_length=3)
+    personaldata = models.ForeignKey(PersonalData, on_delete=models.DO_NOTHING)
+
+    def __str__(self):
+        return self.title+" "+self.progress
+
+
 class About(models.Model):
     title = models.CharField(max_length=50)
     aboutme = models.TextField()
