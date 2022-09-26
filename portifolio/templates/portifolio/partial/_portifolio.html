@@ -9,7 +9,9 @@
             {% for card in cards %}
                 {% if card.section == '4' %}
                     <div class="box">
-                        <img src="image/img-1.jpg" alt="">
+                        {% if card.cover %}
+                            <img src="{{card.cover.url}}">
+                        {% endif %}
                         <div class="content">
                             <h3>{{card.title}}</h3>
                             <div class="link">

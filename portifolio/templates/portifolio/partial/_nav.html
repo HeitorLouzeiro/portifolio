@@ -5,7 +5,7 @@
 
         <div class="user">
             {% for personaldata in personaldatas %}
-            <img src="portifolio/templates/Front-end/image/user-img.png" alt="">
+            <img src="{{ personaldata.cover.url }}" alt="{{personaldata.name}}">
             <h3>{{personaldata.name}}</h3>
             <p>{{personaldata.profession}}</p>
             {%endfor%}

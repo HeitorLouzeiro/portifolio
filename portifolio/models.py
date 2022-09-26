@@ -8,6 +8,8 @@ class PersonalData(models.Model):
     profession = models.CharField(max_length=30)
     title = models.CharField(max_length=80)
     whatsapp = models.CharField(max_length=100, blank=True)
+    cover = models.ImageField(
+        upload_to='portifolio/user/cover/%Y/%m/%d/', blank=True)
 
     def __str__(self):
         return self.name+" "+self.profession
@@ -48,6 +50,8 @@ class Card(models.Model):
     datainfo = models.CharField(max_length=30, blank=True)
     section = models.CharField(max_length=1, choices=SECTION)
     personaldata = models.ForeignKey(PersonalData, on_delete=models.DO_NOTHING)
+    cover = models.ImageField(
+        upload_to='portifolio/projects/cover/%Y/%m/%d/', blank=True)
 
     def __str__(self):
         return self.title+" "+self.section
