@@ -48,6 +48,9 @@ section{
     min-height: 100vh;
     padding:2rem;
 }
+a{
+    text-decoration: none;
+}
 
 .btn{
     margin-top: 1rem;
@@ -112,22 +115,95 @@ section{
 
 .header .navbar{
     padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: normal;
 }
 
 .header .navbar a{
-    display: block;
     margin:1.5rem 0;
     padding:.7rem;
     border-radius: 5rem;
     font-size: 2rem;
     box-shadow: var(--box-shadow);
     color:var(--black);
+    text-decoration:none;
 }
 
 .header .navbar a:hover{
     box-shadow: var(--box-shadow-inset);
     color: var(--green);
 }
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  display: inline-block;
+}
+
+.btndrop{
+    font-size: 2.5rem;
+    padding: 0.7rem;
+    border-radius: 5rem;
+    margin: 1.5rem 1rem;
+    background: none;
+    box-shadow: var(--box-shadow);
+    color: var(--black);
+}
+.btndrop:hover {
+    box-shadow: var(--box-shadow-inset);
+    color: var(--green);
+}
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: fixed;
+  margin:1rem;
+  bottom: 8%;
+  min-width: 160px;
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    display: block;
+    border-radius: 5rem;
+    font-size: 2rem;
+    color:var(--black);
+    text-align: center;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {    
+    color:var(--green);
+    box-shadow: var(--box-shadow-inset);
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+    display: flex;
+    flex-direction: column;
+}
+.dropbtn {
+    position: fixed;
+    margin: 1rem;
+    bottom: 1%;
+    z-index: 1000;
+    height: 5rem;
+    width: 5rem;
+    line-height: 5rem;
+    border-radius: 50%;
+    font-size: 2rem;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    background: var(--bg-color);
+    color: var(--black);
+}
+
+.dropbtn:hover {
+    box-shadow: var(--box-shadow-inset);
+    color: var(--green);
+}
+
 
 #menu-btn{
     position: fixed;
@@ -194,12 +270,6 @@ section{
 .togle-whatsapp a:hover{
     color:var(--green);
     box-shadow: var(--box-shadow-inset);
-}
-
-
-.togle-whatsapp a:hover{
-    box-shadow: var(--box-shadow-inset);
-    color:var(--green);
 }
 
 .home{
@@ -308,6 +378,8 @@ section{
 
 .about .row .progress{
     flex:1 1 40rem;
+    display: block;
+    overflow: visible;
 }
 
 .about .row .progress h3{
@@ -720,7 +792,6 @@ section{
     #menu-btn{
         display: initial;
     }
-
 }
 
 @media (max-width:450px){
