@@ -10,6 +10,8 @@ class PersonalData(models.Model):
     whatsapp = models.CharField(max_length=100, blank=True)
     cover = models.ImageField(
         upload_to='portifolio/user/cover/%Y/%m/%d/', blank=True)
+    pdf = models.FileField(
+        upload_to='portifolio/user/pdf/%Y/%m/%d/', blank=True)
 
     def __str__(self):
         return self.name+" "+self.profession
