@@ -1,34 +1,15 @@
-
-    <div class="dropdown">
-        <button onclick="myFunction()" class="dropbtn"><i class="fas fa-plus"></i></button>
-        <div id="myDropdown" class="dropdown-content">
-            <!-- Button trigger modal -->
-            <button type="button" class="btndrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Create Home
-            </button>
-            <button type="button" class="btndrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Edit Home
-            </button>
-        </div>
-    </div>
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title" id="staticBackdropLabel">Create Home</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save</button>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn"><i class="fas fa-plus"></i></button>
+  <div id="myDropdown" class="dropdown-content">
+    {% if personaldatas %}
+      <button type="button" class="btndrop" data-bs-toggle="modal" data-bs-target="#editpersonaldatamodal{{ personaldata.id }}">Edit Home</button>
+    {% else %}
+      <button type="button" class="btndrop" data-bs-toggle="modal" data-bs-target="#createpersonaldatamodal">Create Home</button>
+    {% endif %}
+  </div>
+</div>
+{% if personaldatas %}
+  {% include 'portifolio/partial/modal/_editpersonaldatamodal.html' %}
+{% else %}
+  {% include 'portifolio/partial/modal/_createpersonaldatamodal.html' %}
+{% endif %}

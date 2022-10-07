@@ -22,4 +22,10 @@ app_name = 'portifolio'
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('create/personaldata/', views.createpersonaldata,
+         name='createpersonaldata'),
+    # path('edit/personaldata/<int:id>/',
+    #      views.editpersonaldata, name='editpersonaldata'),
+    path('edit/personaldata/',
+         views.editpersonaldata, name='editpersonaldata'),
 ]

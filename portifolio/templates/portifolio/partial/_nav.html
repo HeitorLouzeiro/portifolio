@@ -1,37 +1,38 @@
+<!-- header section starts -->
 
-    <!-- header section starts  -->
+<header class="header">
+  <div class="user">
+    {% for personaldata in personaldatas %}
+      {% if personaldata.cover %}
+        <img src="{{ personaldata.cover.url }}" alt="{{ personaldata.name }}" />
+      {% endif %}
+      <h3>{{ personaldata.name }}</h3>
+      <p>{{ personaldata.profession }}</p>
+    {% endfor %}
+  </div>
 
-    <header class="header">
+  <nav class="navbar">
+    <a href="#home">home</a>
+    <a href="#about">about</a>
+    <a href="#curriculo">curriculo</a>
+    <a href="#services">services</a>
+    <a href="#portfolio">portfolio</a>
+    <a href="#contact">contact</a>
+  </nav>
+</header>
 
-        <div class="user">
-            {% for personaldata in personaldatas %}
-            <img src="{{ personaldata.cover.url }}" alt="{{personaldata.name}}">
-            <h3>{{personaldata.name}}</h3>
-            <p>{{personaldata.profession}}</p>
-            {%endfor%}
-        </div>
+<!-- header section ends -->
 
-        <nav class="navbar">
-            <a href="#home">home</a>
-            <a href="#about">about</a>
-            <a href="#curriculo">curriculo</a>
-            <a href="#services">services</a>
-            <a href="#portfolio">portfolio</a>
-            <a href="#contact">contact</a>
-        </nav>
-    </header>
+<div id="menu-btn" class="fas fa-bars"></div>
 
-    <!-- header section ends -->
+<!-- theme toggler -->
+{% if not personaldata.whatsapp %}
+  <div id="theme-toggler" class="fas fa-moon"></div>
+  <div class="togle-whatsapp">
+    {% for personaldata in personaldatas %}
+      <a href="{{ personaldata.whatsapp }}" class="fab fa-whatsapp" target="blank"></a>
+    {% endfor %}
+  </div>
+{% endif %}
 
-    <div id="menu-btn" class="fas fa-bars"></div>
 
-    <!-- theme toggler  -->
-    {% if not personal.whatsapp %}
-    <div id="theme-toggler" class="fas fa-moon"></div>
-    <div class="togle-whatsapp">
-        {% for personaldata in personaldatas %}
-            <a href="{{personaldata.whatsapp}}" class="fab fa-whatsapp" target="blank">
-            </a>
-        {%endfor%}
-    </div>
-    {% endif %}
