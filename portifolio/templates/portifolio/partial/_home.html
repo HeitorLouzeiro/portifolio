@@ -1,22 +1,30 @@
-    <!-- home section starts  -->
+<!-- home section starts -->
 
-    <section class="home" id="home">
+<section class="home" id="home">
+  <div class="content">
+    {% for personaldata in personaldatas %}
+      <h3>{{ personaldata.name }}</h3>
+      <p>{{ personaldata.title }}</p>
+    {% endfor %}
+    <a href="#" class="btn">download CV</a>
+  </div>
 
-        <div class="content">
-        {% for personaldata in personaldatas %}
-        <h3>{{personaldata.name}}</h3>
-        <p>{{personaldata.title}}</p>
-        {% endfor %}
-            <a href="#" class="btn">download CV</a>
-        </div>
-        <div class="share">
-            {% for socialmedia in socialmedias %}
-                {% if socialmedia.skills == False %}
-                    <a href="{{socialmedia.link}}" class="{{socialmedia.icon}}" target="blank"></a>
-                {% endif %}
-            {% endfor %}
-        </div>
-
-    </section>
-
-    <!-- home section ends -->
+  <div class="share">
+    {% for minicard in minicards %}
+      <div class="mini-card">
+        {% if minicard.skills == False %}
+          <a href="{{ minicard.link }}" class="{{ minicard.icon }}" target="_blank"></a>
+          <div class="button-card">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#editsocialmedia{{minicard.id}}"><i class="fas fa-edit"></i></button>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#deleteminicard{{minicard.id}}"><i class="fas fa-trash-alt"></i></button>
+          </div>
+        {% endif %}
+      </div>
+      {% include 'portifolio/partial/modal/_editsocialmediamodal.html' %}
+      {% include 'portifolio/partial/modal/_deleteminicardamodal.html' %}
+    {% endfor %}
+    <button type="button" class="plus-card" data-bs-toggle="modal" data-bs-target="#createsocialmedia"><i class="fas fa-plus"></i></button>
+  </div>
+</section>
+{% include 'portifolio/partial/modal/_createsocialmediamodal.html' %}
+<!-- home section ends -->

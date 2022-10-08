@@ -30,5 +30,6 @@ action={% url 'portifolio:editpersonaldata' %}
         </div>
         
     {%endfor%}
-{% endblock %}
+    {% endblock %}
+    {% block button-action %}<button type="submit" class="btn btn-warning">Save</button>{% endblock button-action %}
 

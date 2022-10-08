@@ -275,8 +275,38 @@ a{
     color:var(--green);
 }
 
+.mini-card{
+    display: inline-grid;
+    align-items: center;
+    font-size: 1.5rem;
+}
+.plus-card{
+    height: 5rem;
+    width: 5rem;
+    line-height: 5rem;
+    box-shadow: var(--box-shadow);
+    margin: 0.5rem;
+    font-size: 2rem;
+    color: var(--black);
+    border-radius: 0.5rem;
+    background: var(--bg-color);
+}
+.plus-card:hover{
+    box-shadow: var(--box-shadow-inset);
+    color: var(--green);
+}
+.button-card{
+    font-size: 1.7rem;
+    box-shadow: var(--box-shadow);
+    margin: 0.5rem;
+    border-radius: 0.5rem;
+}
+.button-card:hover{
+    color:var(--green);
+    box-shadow: var(--box-shadow-inset);
+}
+
 .home{
-    display: flex;
     flex-flow: column;
     align-items: center;
     justify-content: center;

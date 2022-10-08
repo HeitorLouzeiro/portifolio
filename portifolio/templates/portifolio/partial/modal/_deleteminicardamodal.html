@@ -1,0 +1,17 @@
+{% extends 'portifolio/partial/modal/_createpersonaldatamodal.html' %}
+
+{% block modal-id %}id="deleteminicard{{minicard.id}}"{% endblock modal-id %}
+{% block modal-title %}Delete {{minicard.name}}{% endblock modal-title %}
+
+{% block action %}
+action="{% url 'portifolio:deleteminicard' minicard.id %}"
+{% endblock %}
+{% block forms %}
+
+<input type="hidden" name ="minicard_id" value="{{ minicard.id }}">
+<h3>Are you sure ?</h3>
+<h3>This action cannot be reversed!</h3>
+{% endblock %}
+{% block button-action %}<button type="submit" class="btn btn-danger">Delete</button>{% endblock button-action %}
+
+
