@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import About, BarProgress, Card, PersonalData, SocialMedia
+from .models import About, BarProgress, Card, MiniCard, PersonalData
 
 
 class PersonalDataForm(forms.ModelForm):
@@ -12,3 +12,9 @@ class PersonalDataForm(forms.ModelForm):
             'title',
             'whatsapp',
         ]
+
+
+class MiniCardForm(forms.ModelForm):
+    class Meta:
+        model = MiniCard
+        exclude = ['skills']

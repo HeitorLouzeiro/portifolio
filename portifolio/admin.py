@@ -1,15 +1,9 @@
 from django.contrib import admin
 
-from .models import About, BarProgress, Card, PersonalData, SocialMedia
+from .models import About, BarProgress, Card, PersonalData, MiniCard
+
 
 # Register your models here.
-
-
-class SocialMediaInlines(admin.TabularInline):
-    model = SocialMedia
-    extra = 1
-
-
 class AboutInlines(admin.TabularInline):
     model = About
     extra = 1
@@ -29,7 +23,6 @@ class PersonalDataAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'profession']
 
     inlines = [
-        SocialMediaInlines,
         AboutInlines,
         BarProgressInlines,
         CardInlines,
@@ -37,3 +30,10 @@ class PersonalDataAdmin(admin.ModelAdmin):
 
 
 admin.site.register(PersonalData, PersonalDataAdmin)
+
+
+class MiniCardAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'skills']
+
+
+admin.site.register(MiniCard, MiniCardAdmin)

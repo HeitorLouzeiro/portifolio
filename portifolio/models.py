@@ -17,12 +17,11 @@ class PersonalData(models.Model):
         return self.name+" "+self.profession
 
 
-class SocialMedia(models.Model):
+class MiniCard(models.Model):
     name = models.CharField(max_length=20)
     icon = models.CharField(max_length=100)
     link = models.CharField(max_length=100, blank=True)
     skills = models.BooleanField(default=False)
-    personaldata = models.ForeignKey(PersonalData, on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return self.name
