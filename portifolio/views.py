@@ -3,7 +3,7 @@ from django.http.response import Http404
 from django.shortcuts import redirect, render
 from django.urls import reverse
 
-from .forms import MiniCardForm, PersonalDataForm
+from .forms import AboutForm, MiniCardForm, PersonalDataForm
 from .models import About, BarProgress, Card, MiniCard, PersonalData
 
 
@@ -16,8 +16,9 @@ def home(request):
     barprogress = BarProgress.objects.all()
     cards = Card.objects.all()
 
-    form = PersonalDataForm
+    form_personaldata = PersonalDataForm
     form_minicard = MiniCardForm
+    form_about = AboutForm
     context = {
         'personaldatas': personaldatas,
         'minicards': minicards,
@@ -25,8 +26,9 @@ def home(request):
         'barprogress': barprogress,
         'cards': cards,
 
-        'form': form,
+        'form_personaldata': form_personaldata,
         'form_minicard': form_minicard,
+        'form_about': form_about,
     }
     return render(request, template_name, context)
 
@@ -100,4 +102,29 @@ def deleteminicard(request, minicard_id):
 
     return redirect(reverse('portifolio:home'))
 
-    return HttpResponse('Mini Card Apagado com sucesso!')
+
+def createabout(request):
+    form = AboutForm(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+        return redirect(reverse('portifolio:home'))
+
+    context = {
+        'form': form,
+    }
+    return render(request, context)
+
+
+def editabout(request):
+    if request.method == 'POST':
+        id = request.POST.get('about_id')
+        title = request.POST.get('title')
+        about_me = request.POST.get('aboutme')
+
+        aboutmedata = About.objects.get(id=id)
+
+        aboutmedata = About(
+            id=id, title=title, aboutme=about_me)
+        aboutmedata.save()
+        return redirect(reverse('portifolio:home'))

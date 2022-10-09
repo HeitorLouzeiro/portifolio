@@ -1,0 +1,25 @@
+{% extends 'portifolio/partial/modal/_createpersonaldatamodal.html' %}
+
+{% block modal-id %}id="editaboutmodal{{aboutdata.id}}"{% endblock modal-id %}
+{% block modal-title %}Edit About{% endblock modal-title %}
+
+{% block action %}
+action={% url 'portifolio:editabout' %}
+{% endblock %}
+{% block forms %}
+    {% for aboutdata in about %}
+        <input type="hidden" name ="about_id" value="{{ aboutdata.id }}">
+        
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="title" placeholder="title" value="{{ aboutdata.title }}">
+            <label class="form-label">Title</label>
+        </div>        
+
+        <div class="form-floating mb-3">
+            <textarea class="form-control"  placeholder="Leave a comment here" name="aboutme" style="height: 100px">{{aboutdata.aboutme}}</textarea>
+            <label class="form-label" >Comments</label>
+        </div>
+    {%endfor%}
+{% endblock %}
+    {% block button-action %}<button type="submit" class="btn btn-warning">Save</button>{% endblock button-action %}
+

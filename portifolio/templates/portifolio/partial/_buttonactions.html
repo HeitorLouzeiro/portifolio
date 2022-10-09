@@ -6,10 +6,24 @@
     {% else %}
       <button type="button" class="btndrop" data-bs-toggle="modal" data-bs-target="#createpersonaldatamodal">Create Home</button>
     {% endif %}
+
+    {% if about %}
+      <button type="button" class="btndrop" data-bs-toggle="modal" data-bs-target="#editaboutmodal{{ aboutdata.id }}">Edit About</button>
+    {% else %}
+      <button type="button" class="btndrop" data-bs-toggle="modal" data-bs-target="#createaboutmodal">Create About</button>
+    {% endif %}
+
   </div>
 </div>
+
 {% if personaldatas %}
   {% include 'portifolio/partial/modal/_editpersonaldatamodal.html' %}
 {% else %}
   {% include 'portifolio/partial/modal/_createpersonaldatamodal.html' %}
+{% endif %}
+
+{% if about %}
+  {% include 'portifolio/partial/modal/_editaboutmodal.html' %}
+{% else %}
+  {% include 'portifolio/partial/modal/_createaboutmodal.html' %}
 {% endif %}

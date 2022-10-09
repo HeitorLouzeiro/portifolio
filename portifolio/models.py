@@ -39,7 +39,6 @@ class BarProgress(models.Model):
 class About(models.Model):
     title = models.CharField(max_length=50)
     aboutme = models.TextField()
-    personaldata = models.ForeignKey(PersonalData, on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return self.title

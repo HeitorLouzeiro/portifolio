@@ -32,4 +32,8 @@ urlpatterns = [
          views.editsocialmedia, name='editsocialmedia'),
     path('delete/minicard/<int:minicard_id>',
          views.deleteminicard, name='deleteminicard'),
+    path('create/about/', views.createabout, name='createabout'),
+    path('edit/about/',
+         views.editabout, name='editabout'),
+
 ]
