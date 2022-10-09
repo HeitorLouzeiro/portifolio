@@ -1,0 +1,24 @@
+{% extends 'portifolio/partial/modal/_createpersonaldatamodal.html' %}
+
+{% block modal-id %}id="editbarprogress{{barprogress.id}}"{% endblock modal-id %}
+{% block modal-title %}Edit {{barprogress.title}}{% endblock modal-title %}
+
+{% block action %}
+action={% url 'portifolio:editbarprogress' %}
+{% endblock %}
+{% block forms %}
+<input type="hidden" name="barprogress_id" value="{{ barprogress.id }}">
+
+<div class="form-floating mb-3">
+    <input class="form-control" placeholder="title" name="title" value="{{ barprogress.title }}">
+    <label class="form-label">Title</label>
+</div>
+
+<div class="form-floating mb-3">
+    <input type="text" class="form-control" name="progress" value="{{ barprogress.progress }}" placeholder="Icon">
+    <label class="form-label" >Progress</label>
+</div>
+{% endblock %}
+{% block button-action %}<button type="submit" class="btn btn-warning">Save</button>{% endblock button-action %}
+
+

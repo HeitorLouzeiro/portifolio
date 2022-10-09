@@ -447,6 +447,12 @@ a{
     border-radius: 5rem;
 }
 
+.about .row .box-progress .button-card{
+    display: flex;
+    height:2rem;
+    padding:.5rem;
+    flex-direction: column;
+}
 
 .curriculo{
     display:flex;

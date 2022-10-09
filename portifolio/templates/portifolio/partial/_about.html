@@ -32,6 +32,12 @@
             <span style="width:{{ barprogress.progress }}"></span>
           </div>
         </div>
+        <div class="button-card">
+          <button type="button" data-bs-toggle="modal" data-bs-target="#editbarprogress{{barprogress.id}}"><i class="fas fa-edit"></i></button>
+          <button type="button" data-bs-toggle="modal" data-bs-target="#deletebarprogress{{barprogress.id}}"><i class="fas fa-trash-alt"></i></button>
+        </div>
+        {% include 'portifolio/partial/modal/_editbarprogressmodal.html' %}
+        {% include 'portifolio/partial/modal/_deletebarprogressmodal.html' %}
       {% endfor %}
     </div>
   </div>

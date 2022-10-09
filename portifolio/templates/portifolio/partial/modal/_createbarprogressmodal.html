@@ -1,0 +1,12 @@
+{% extends 'portifolio/partial/modal/_createpersonaldatamodal.html' %}
+
+{% block modal-id %}id="createbarprogressmodal"{% endblock modal-id %}
+{% block modal-title %}Create Bar Progress{% endblock modal-title %}
+
+{% block action %}
+action={% url 'portifolio:createbarprogress' %}
+{% endblock %}
+{% block forms %}
+    {{ form_barprogress.as_p }}
+{% endblock %}
+

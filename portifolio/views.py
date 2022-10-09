@@ -3,7 +3,7 @@ from django.http.response import Http404
 from django.shortcuts import redirect, render
 from django.urls import reverse
 
-from .forms import AboutForm, MiniCardForm, PersonalDataForm
+from .forms import AboutForm, BarProgressForm, MiniCardForm, PersonalDataForm
 from .models import About, BarProgress, Card, MiniCard, PersonalData
 
 
@@ -19,6 +19,7 @@ def home(request):
     form_personaldata = PersonalDataForm
     form_minicard = MiniCardForm
     form_about = AboutForm
+    form_barprogress = BarProgressForm
     context = {
         'personaldatas': personaldatas,
         'minicards': minicards,
@@ -29,6 +30,7 @@ def home(request):
         'form_personaldata': form_personaldata,
         'form_minicard': form_minicard,
         'form_about': form_about,
+        'form_barprogress': form_barprogress,
     }
     return render(request, template_name, context)
 
@@ -39,11 +41,6 @@ def createpersonaldata(request):
     if form.is_valid():
         form.save()
         return redirect(reverse('portifolio:home'))
-
-    context = {
-        'form': form,
-    }
-    return render(request, context)
 
 
 def editpersonaldata(request):
@@ -68,11 +65,6 @@ def createsocialmedia(request):
     if form.is_valid():
         form.save()
         return redirect(reverse('portifolio:home'))
-
-    context = {
-        'form': form,
-    }
-    return render(request, context)
 
 
 def editsocialmedia(request):
@@ -110,11 +102,6 @@ def createabout(request):
         form.save()
         return redirect(reverse('portifolio:home'))
 
-    context = {
-        'form': form,
-    }
-    return render(request, context)
-
 
 def editabout(request):
     if request.method == 'POST':
@@ -128,3 +115,38 @@ def editabout(request):
             id=id, title=title, aboutme=about_me)
         aboutmedata.save()
         return redirect(reverse('portifolio:home'))
+
+
+def createbarprogress(request):
+    form = BarProgressForm(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+        return redirect(reverse('portifolio:home'))
+
+
+def editbarprogress(request):
+    if request.method == 'POST':
+        id = request.POST.get('barprogress_id')
+        title = request.POST.get('title')
+        progress = request.POST.get('progress')
+
+        barprogress = BarProgress.objects.get(id=id)
+
+        barprogress = BarProgress(
+            id=id, title=title, progress=progress)
+        barprogress.save()
+        return redirect(reverse('portifolio:home'))
+
+
+def deletebarprogress(request, barprogress_id):
+    if not request.POST:
+        raise Http404()
+
+    barprogress = BarProgress.objects.get(id=barprogress_id)
+
+    if not barprogress:
+        raise Http404()
+    barprogress.delete()
+
+    return redirect(reverse('portifolio:home'))

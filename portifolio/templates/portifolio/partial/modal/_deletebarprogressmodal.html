@@ -1,0 +1,17 @@
+{% extends 'portifolio/partial/modal/_createpersonaldatamodal.html' %}
+
+{% block modal-id %}id="deletebarprogress{{barprogress.id}}"{% endblock modal-id %}
+{% block modal-title %}Delete {{barprogress.title}}{% endblock modal-title %}
+
+{% block action %}
+action="{% url 'portifolio:deletebarprogress' barprogress.id %}"
+{% endblock %}
+{% block forms %}
+
+<input type="hidden" name ="barprogress_id" value="{{ barprogress.id }}">
+<h3>Are you sure ?</h3>
+<h3>This action cannot be reversed!</h3>
+{% endblock %}
+{% block button-action %}<button type="submit" class="btn btn-danger">Delete</button>{% endblock button-action %}
+
+

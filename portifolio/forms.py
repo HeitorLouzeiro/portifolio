@@ -1,4 +1,3 @@
-from dataclasses import fields
 from django import forms
 
 from .models import About, BarProgress, Card, MiniCard, PersonalData
@@ -24,4 +23,10 @@ class MiniCardForm(forms.ModelForm):
 class AboutForm(forms.ModelForm):
     class Meta:
         model = About
+        fields = '__all__'
+
+
+class BarProgressForm(forms.ModelForm):
+    class Meta:
+        model = BarProgress
         fields = '__all__'

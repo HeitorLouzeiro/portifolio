@@ -4,11 +4,6 @@ from .models import About, BarProgress, Card, MiniCard, PersonalData
 
 
 # Register your models here.
-class BarProgressInlines(admin.TabularInline):
-    model = BarProgress
-    extra = 1
-
-
 class CardInlines(admin.TabularInline):
     model = Card
     extra = 1
@@ -18,7 +13,6 @@ class PersonalDataAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'profession']
 
     inlines = [
-        BarProgressInlines,
         CardInlines,
     ]
 
@@ -38,3 +32,10 @@ class AboutAdmin(admin.ModelAdmin):
 
 
 admin.site.register(About, AboutAdmin)
+
+
+class BarProgressAdmin(admin.ModelAdmin):
+    list_display = ['id', 'title', 'progress']
+
+
+admin.site.register(BarProgress, BarProgressAdmin)

@@ -22,18 +22,27 @@ app_name = 'portifolio'
 
 urlpatterns = [
     path('', views.home, name='home'),
+
     path('create/personaldata/', views.createpersonaldata,
          name='createpersonaldata'),
     path('edit/personaldata/',
          views.editpersonaldata, name='editpersonaldata'),
+
     path('create/socialmedia/', views.createsocialmedia,
          name='createsocialmedia'),
     path('edit/socialmedia/',
          views.editsocialmedia, name='editsocialmedia'),
     path('delete/minicard/<int:minicard_id>',
          views.deleteminicard, name='deleteminicard'),
+
     path('create/about/', views.createabout, name='createabout'),
     path('edit/about/',
          views.editabout, name='editabout'),
+
+    path('create/barprogress/', views.createbarprogress, name='createbarprogress'),
+    path('edit/barprogress/',
+         views.editbarprogress, name='editbarprogress'),
+    path('delete/barprogress/<int:barprogress_id>',
+         views.deletebarprogress, name='deletebarprogress'),
 
 ]
