@@ -277,8 +277,6 @@ a{
 
 .mini-card{
     display: inline-grid;
-    align-items: center;
-    font-size: 1.5rem;
 }
 .plus-card{
     height: 5rem;
@@ -327,7 +325,8 @@ a{
 }
 
 .home .share{
-    position: relative;
+    position:relative;
+    display: inline-flex;
     top: 10rem;
     border-radius: .5rem;
     box-shadow: var(--box-shadow);

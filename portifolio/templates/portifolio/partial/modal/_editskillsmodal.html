@@ -1,12 +1,11 @@
 {% extends 'portifolio/partial/modal/_createpersonaldatamodal.html' %}
 
-{% block modal-id %}id="editsocialmedia{{minicard.id}}"{% endblock modal-id %}
+{% block modal-id %}id="editskills{{minicard.id}}"{% endblock modal-id %}
 {% block modal-title %}Edit {{minicard.name}}{% endblock modal-title %}
 
 {% block action %}
-action={% url 'portifolio:editsocialmedia' %}
-{% endblock %}
-{% block forms %}
+action={% url 'portifolio:editskills' %}
+{% endblock %}{% block forms %}
 <input type="hidden" name ="minicard_id" value="{{ minicard.id }}">
 
 <div class="form-floating mb-3">
@@ -16,12 +15,12 @@ action={% url 'portifolio:editsocialmedia' %}
 
 <div class="form-floating mb-3">
     <input type="text" class="form-control" name="icon" value="{{ minicard.icon }}" placeholder="Icon">
-    <label class="form-label" >Icon</label>
+    <label class="form-label">Icon</label>
 </div>
 
 <div class="form-floating mb-3">
     <input type="text" class="form-control" name="link" value="{{ minicard.link }}" placeholder="Link">
-    <label class="form-label" >Link</label>
+    <label>Link</label>
 </div>
 {% endblock %}
 {% block button-action %}<button type="submit" class="btn btn-warning">Save</button>{% endblock button-action %}

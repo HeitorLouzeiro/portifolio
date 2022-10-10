@@ -45,4 +45,7 @@ urlpatterns = [
     path('delete/barprogress/<int:barprogress_id>',
          views.deletebarprogress, name='deletebarprogress'),
 
+    path('create/skills/', views.createskills, name='createskills'),
+    path('edit/skills/',
+         views.editskills, name='editskills'),
 ]

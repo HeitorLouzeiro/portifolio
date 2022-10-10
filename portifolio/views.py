@@ -150,3 +150,28 @@ def deletebarprogress(request, barprogress_id):
     barprogress.delete()
 
     return redirect(reverse('portifolio:home'))
+
+
+def createskills(request):
+    form = MiniCardForm(request.POST or None)
+
+    if form.is_valid():
+        skill = form.save(commit=False)
+        skill.skills = True
+        skill.save()
+        return redirect(reverse('portifolio:home'))
+
+
+def editskills(request):
+    if request.method == 'POST':
+        id = request.POST.get('minicard_id')
+        name = request.POST.get('name')
+        icon = request.POST.get('icon')
+        link = request.POST.get('link')
+
+        socialmedia = MiniCard.objects.get(id=id)
+
+        socialmedia = MiniCard(
+            id=id, name=name, icon=icon, link=link, skills=True)
+        socialmedia.save()
+        return redirect(reverse('portifolio:home'))
