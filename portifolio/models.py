@@ -57,7 +57,6 @@ class Card(models.Model):
     linkdeploy = models.CharField(max_length=100, blank=True)
     datainfo = models.CharField(max_length=30, blank=True)
     section = models.CharField(max_length=1, choices=SECTION)
-    personaldata = models.ForeignKey(PersonalData, on_delete=models.DO_NOTHING)
     cover = models.ImageField(
         upload_to='portifolio/projects/cover/%Y/%m/%d/', blank=True)
 

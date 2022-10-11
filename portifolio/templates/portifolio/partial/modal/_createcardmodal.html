@@ -1,0 +1,12 @@
+{% extends 'portifolio/partial/modal/_createpersonaldatamodal.html' %}
+
+{% block modal-id %}id="createcardmodal"{% endblock modal-id %}
+{% block modal-title %}Create Cads{% endblock modal-title %}
+
+{% block action %}
+action={% url 'portifolio:createcards' %}
+{% endblock %}
+{% block forms %}
+    {{ form_card.as_p }}
+{% endblock %}
+

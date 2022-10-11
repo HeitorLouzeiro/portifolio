@@ -30,3 +30,9 @@ class BarProgressForm(forms.ModelForm):
     class Meta:
         model = BarProgress
         fields = '__all__'
+
+
+class CardForm(forms.ModelForm):
+    class Meta:
+        model = Card
+        fields = '__all__'

@@ -1,56 +1,57 @@
+<!-- my curriculum section starts -->
 
-    <!-- my curriculum section starts  -->
+<section class="curriculo" id="curriculo">
+  <h1 class="heading"><span>Curriculo</span></h1>
+  <h3 class="heading">
+    <!--   <img
+                src="https://img.icons8.com/external-flaticons-lineal-flat-icons/64/000000/external-skill-resume-flaticons-lineal-flat-icons.png" />   -->
+    <img src="https://img.icons8.com/external-itim2101-flat-itim2101/48/000000/external-skill-teamwork-itim2101-flat-itim2101-1.png" />
 
-    <section class="curriculo" id="curriculo">
+    Skills
+  </h3>
+  <div class="share">
+    {% for minicard in minicards %}
+      <div class="mini-card">
+        {% if minicard.skills == True %}
+          <a href="{{ minicard.link }}" class="fab" target="blank"><img src="{{ minicard.icon }}" /></a>
+          <div class="button-card">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#editskills{{ minicard.id }}"><i class="fas fa-edit"></i></button>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#deleteminicard{{ minicard.id }}"><i class="fas fa-trash-alt"></i></button>
+          </div>
+        {% endif %}
+        {% include 'portifolio/partial/modal/_editskillsmodal.html' %}
+        {% include 'portifolio/partial/modal/_deleteminicardamodal.html' %}
+      </div>
+    {% endfor %}
+    <button type="button" class="plus-card" data-bs-toggle="modal" data-bs-target="#createskills"><i class="fas fa-plus"></i></button>
+  </div>
+  <h3 class="heading">
+    <!-- <img src="https://img.icons8.com/dotty/50/000000/education.png" /> -->
 
-        <h1 class="heading"> <span>Curriculo</span> </h1>
-        <h3 class="heading">
-            <!-- <img
-                src="https://img.icons8.com/external-flaticons-lineal-flat-icons/64/000000/external-skill-resume-flaticons-lineal-flat-icons.png" /> -->
-            <img
-                src="https://img.icons8.com/external-itim2101-flat-itim2101/48/000000/external-skill-teamwork-itim2101-flat-itim2101-1.png" />
-
-            Skills
-        </h3>
-        <div class="share">
-            {% for minicard in minicards %}
-            <div class="mini-card">
-                {% if minicard.skills == True %}
-                    <a href="{{minicard.link}}" class="fab" target="blank">
-                        <img src="{{minicard.icon}}">
-                    </a>
-                    <div class="button-card">
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#editskills{{minicard.id}}"><i class="fas fa-edit"></i></button>
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#deleteminicard{{minicard.id}}"><i class="fas fa-trash-alt"></i></button>
-                    </div>
-                {%endif%}
-                {% include 'portifolio/partial/modal/_editskillsmodal.html' %}
-                {% include 'portifolio/partial/modal/_deleteminicardamodal.html' %}
+    <i class="fas fa-school"></i>
+    Educação
+  </h3>
+  <div class="row-education">
+    <div class="box-container-educacao">
+      {% for card in cards %}
+        {% if card.section == '2' %}
+        <div class="box-card">
+        <div class="box-educacao">
+              <i class="fas fa-graduation-cap"></i>
+              <span>{{ card.datainfo }}</span>
+              <h3>{{ card.title }}</h3>
+              <p>{{ card.subtitle }}</p>
             </div>
-            {% endfor %}
-            <button type="button" class="plus-card" data-bs-toggle="modal" data-bs-target="#createskills"><i class="fas fa-plus"></i></button>
-        </div>
-        <h3 class="heading">
-            <!-- <img src="https://img.icons8.com/dotty/50/000000/education.png" /> -->
-            
-            <i class="fas fa-school"></i>
-            Educação
-        </h3>
-        <div class="row-education">
-            <div class="box-container-educacao">
-                {% for card in cards %}
-                    {% if card.section == '2'%}                    
-                        <div class="box-educacao">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>{{card.datainfo}}</span>
-                            <h3>{{card.title}}</h3>
-                            <p>{{card.subtitle}}</p>
-                        </div>
-                    {% endif %}
-                {% endfor %}
+            <div class="button-card">
+              <button type="button" data-bs-toggle="modal" data-bs-target="#editcard{{ card.id }}"><i class="fas fa-edit"></i></button>
+              <button type="button" data-bs-toggle="modal" data-bs-target="#deletecard{{ card.id }}"><i class="fas fa-trash-alt"></i></button>
             </div>
-        </div>
-    </section>
-    {% include 'portifolio/partial/modal/_createskillsmodal.html' %}
-
-    <!-- my curriculum section ends -->
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% include 'portifolio/partial/modal/_createskillsmodal.html' %}
+{% include 'portifolio/partial/modal/_editcardmodal.html' %}
+<!-- my curriculum section ends -->

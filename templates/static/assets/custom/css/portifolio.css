@@ -499,7 +499,10 @@ a{
     border-radius: .5rem;
     box-shadow: var(--box-shadow);
 }
-
+.box-card {
+    display: grid;
+    align-items: baseline;
+}
 .curriculo .row .box-container .box h3{
     font-size: 5rem;
     color:var(--black);
@@ -577,9 +580,9 @@ a{
     background: #222;
     color: #fff;
     border-radius: 1rem;
-    padding: 0.1rem 1rem;
-    position: relative;
-    left: 20px;
+    margin: 0.1rem 6rem;
+    display: flex;
+    justify-content: center;
 }
 
 .curriculo .box-container-educacao .box-educacao p{
@@ -587,6 +590,7 @@ a{
     line-height: 1;
     color: var(--light-color);
     padding: 0.5rem 0;
+    text-align: justify;
 }
 
 .curriculo .box-container-educacao .box-educacao::before{
@@ -608,6 +612,17 @@ a{
 .curriculo .box-container-educacao .box-educacao:hover > *{
     color:#fff;
 }
+
+
+.curriculo .box-card .button-card{
+    font-size: 1.8rem;
+    line-height: 1;
+    padding: 0.5rem 0;
+    margin-inline: 10%;
+    text-align: center;
+}
+
+
 
 
 

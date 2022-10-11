@@ -3,7 +3,8 @@ from django.http.response import Http404
 from django.shortcuts import redirect, render
 from django.urls import reverse
 
-from .forms import AboutForm, BarProgressForm, MiniCardForm, PersonalDataForm
+from .forms import (AboutForm, BarProgressForm, CardForm, MiniCardForm,
+                    PersonalDataForm)
 from .models import About, BarProgress, Card, MiniCard, PersonalData
 
 
@@ -20,6 +21,8 @@ def home(request):
     form_minicard = MiniCardForm
     form_about = AboutForm
     form_barprogress = BarProgressForm
+    form_card = CardForm
+
     context = {
         'personaldatas': personaldatas,
         'minicards': minicards,
@@ -31,6 +34,7 @@ def home(request):
         'form_minicard': form_minicard,
         'form_about': form_about,
         'form_barprogress': form_barprogress,
+        'form_card': form_card,
     }
     return render(request, template_name, context)
 
@@ -169,9 +173,44 @@ def editskills(request):
         icon = request.POST.get('icon')
         link = request.POST.get('link')
 
-        socialmedia = MiniCard.objects.get(id=id)
+        skills = MiniCard.objects.get(id=id)
 
-        socialmedia = MiniCard(
+        skills = MiniCard(
             id=id, name=name, icon=icon, link=link, skills=True)
-        socialmedia.save()
+        skills.save()
         return redirect(reverse('portifolio:home'))
+
+
+def createcards(request):
+    form = CardForm(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+        return redirect(reverse('portifolio:home'))
+
+
+def editcard(request):
+    if request.method == 'POST':
+        id = request.POST.get('card_id')
+        title = request.POST.get('title')
+        subtitle = request.POST.get('subtitle')
+        icon = request.POST.get('icon')
+        linkgithub = request.POST.get('linkgithub')
+        linkdeploy = request.POST.get('linkdeploy')
+        datainfo = request.POST.get('datainfo')
+        section = request.POST.get('section')
+
+        card = Card.objects.get(id=id)
+        if section == '1':
+            card = Card(
+                id=id, title=title, subtitle=subtitle, section=section)
+            card.save()
+            return redirect(reverse('portifolio:home'))
+        elif section == '2':
+            card = Card(
+                id=id, title=title, subtitle=subtitle, datainfo=datainfo, section=section)
+            card.save()
+            return redirect(reverse('portifolio:home'))
+
+        else:
+            HttpResponse('entrou no else')
