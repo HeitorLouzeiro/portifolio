@@ -622,10 +622,6 @@ a{
     text-align: center;
 }
 
-
-
-
-
 .services .box-container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
@@ -678,6 +674,17 @@ a{
 .services .box-container .box:hover > *{
     color:#fff;
 }
+
+
+.services .box-card .button-card{
+    font-size: 1.8rem;
+    line-height: 1;
+    padding: 0.5rem 0;
+    margin-inline: 10%;
+    text-align: center;
+}
+
+
 
 .portfolio .box-container{
     display: grid;

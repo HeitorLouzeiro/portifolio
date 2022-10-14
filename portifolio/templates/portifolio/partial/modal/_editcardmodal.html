@@ -9,35 +9,47 @@ action={% url 'portifolio:editcard' %}
 {% block forms %}
 <input type="hidden" name ="card_id" value="{{ card.id }}">
 <input type="hidden" name ="section" value="{{ card.section }}">
-{% if card.section == '1' %}
 
+{% if card.title %}
 <div class="form-floating mb-3">
     <input class="form-control" name="title" placeholder="name" value="{{ card.title }}">
     <label class="form-label">Title</label>
 </div>
+{% endif %}
 
+{% if card.subtitle %}
 <div class="form-floating mb-3">
     <input class="form-control" name="subtitle" placeholder="subtitle" value="{{ card.subtitle }}">
     <label class="form-label">Subtitle</label>
 </div>
+{% endif %}
 
-{% elif card.section == '2'%}
-    
+{% if card.icon %}
 <div class="form-floating mb-3">
-    <input class="form-control" name="title" placeholder="name" value="{{ card.title }}">
-    <label class="form-label">Title</label>
+    <input class="form-control" name="icon" placeholder="icon" value="{{ card.icon }}">
+    <label class="form-label">Icon</label>
 </div>
+{% endif %}
 
+{% if card.linkgithub %}
 <div class="form-floating mb-3">
-    <input class="form-control" name="subtitle" placeholder="subtitle" value="{{ card.subtitle }}">
-    <label class="form-label">Subtitle</label>
+    <input class="form-control" name="linkgithub" placeholder="github" value="{{ card.linkgithub }}">
+    <label class="form-label">Github</label>
 </div>
+{% endif %}
 
+{% if card.linkdeploy %}
 <div class="form-floating mb-3">
-    <input class="form-control" name="datainfo" placeholder="info" value="{{ card.datainfo }}">
-    <label class="form-label">Data info</label>
+    <input class="form-control" name="deploy" placeholder="deploy" value="{{ card.linkdeploy }}">
+    <label class="form-label">Deploy</label>
 </div>
+{% endif %}
 
+{% if card.datainfo %}
+    <div class="form-floating mb-3">
+        <input class="form-control" name="datainfo" placeholder="info" value="{{ card.datainfo }}">
+        <label class="form-label">Data info</label>
+    </div>
 {% endif %}
 
 {% endblock %}

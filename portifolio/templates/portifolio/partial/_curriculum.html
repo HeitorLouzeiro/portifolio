@@ -42,10 +42,7 @@
               <h3>{{ card.title }}</h3>
               <p>{{ card.subtitle }}</p>
             </div>
-            <div class="button-card">
-              <button type="button" data-bs-toggle="modal" data-bs-target="#editcard{{ card.id }}"><i class="fas fa-edit"></i></button>
-              <button type="button" data-bs-toggle="modal" data-bs-target="#deletecard{{ card.id }}"><i class="fas fa-trash-alt"></i></button>
-            </div>
+            {% include 'portifolio/partial/_buttoncard.html' %}
           </div>
         {% endif %}
       {% endfor %}

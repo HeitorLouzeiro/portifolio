@@ -58,7 +58,8 @@ def editpersonaldata(request):
         personaldata = PersonalData.objects.get(id=id)
 
         personaldata = PersonalData(
-            id=id, name=name, profession=profession, title=title, whatsapp=whatsapp)
+            id=id, name=name, profession=profession,
+            title=title, whatsapp=whatsapp)
         personaldata.save()
         return redirect(reverse('portifolio:home'))
 
@@ -201,16 +202,8 @@ def editcard(request):
         section = request.POST.get('section')
 
         card = Card.objects.get(id=id)
-        if section == '1':
-            card = Card(
-                id=id, title=title, subtitle=subtitle, section=section)
-            card.save()
-            return redirect(reverse('portifolio:home'))
-        elif section == '2':
-            card = Card(
-                id=id, title=title, subtitle=subtitle, datainfo=datainfo, section=section)
-            card.save()
-            return redirect(reverse('portifolio:home'))
-
-        else:
-            HttpResponse('entrou no else')
+        card = Card(id=id, title=title, subtitle=subtitle, icon=icon,
+                    linkgithub=linkgithub, linkdeploy=linkdeploy,
+                    datainfo=datainfo, section=section)
+        card.save()
+        return redirect(reverse('portifolio:home'))

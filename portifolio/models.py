@@ -51,11 +51,11 @@ class Card(models.Model):
         ('4', 'Portfolio'),
     )
     title = models.CharField(max_length=30)
-    subtitle = models.CharField(max_length=100, blank=True)
-    icon = models.CharField(max_length=100, blank=True)
-    linkgithub = models.CharField(max_length=100, blank=True)
-    linkdeploy = models.CharField(max_length=100, blank=True)
-    datainfo = models.CharField(max_length=30, blank=True)
+    subtitle = models.CharField(max_length=100)
+    icon = models.CharField(max_length=100, null=True, blank=True)
+    linkgithub = models.CharField(max_length=100, null=True, blank=True)
+    linkdeploy = models.CharField(max_length=100, null=True, blank=True)
+    datainfo = models.CharField(max_length=30, null=True, blank=True)
     section = models.CharField(max_length=1, choices=SECTION)
     cover = models.ImageField(
         upload_to='portifolio/projects/cover/%Y/%m/%d/', blank=True)
