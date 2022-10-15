@@ -11,6 +11,7 @@ class PersonalDataForm(forms.ModelForm):
             'profession',
             'title',
             'whatsapp',
+            'cover',
         ]
 
 

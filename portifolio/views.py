@@ -1,4 +1,5 @@
-from django.http import HttpResponse
+import os
+
 from django.http.response import Http404
 from django.shortcuts import redirect, render
 from django.urls import reverse
@@ -40,7 +41,7 @@ def home(request):
 
 
 def createpersonaldata(request):
-    form = PersonalDataForm(request.POST or None)
+    form = PersonalDataForm(request.POST, request.FILES or None)
 
     if form.is_valid():
         form.save()
@@ -48,20 +49,19 @@ def createpersonaldata(request):
 
 
 def editpersonaldata(request):
+    id = request.POST.get('personaldata_id')
+    personaldata = PersonalData.objects.get(id=id)
     if request.method == 'POST':
-        id = request.POST.get('personaldata_id')
-        name = request.POST.get('name')
-        profession = request.POST.get('profession')
-        title = request.POST.get('title')
-        whatsapp = request.POST.get('whatsapp')
-
-        personaldata = PersonalData.objects.get(id=id)
-
-        personaldata = PersonalData(
-            id=id, name=name, profession=profession,
-            title=title, whatsapp=whatsapp)
-        personaldata.save()
-        return redirect(reverse('portifolio:home'))
+        if len(request.FILES) != 0:
+            if len(personaldata.cover) > 0:
+                os.remove(personaldata.cover.path)
+            personaldata.cover = request.FILES['cover']
+    personaldata.name = request.POST.get('name')
+    personaldata.profession = request.POST.get('profession')
+    personaldata.title = request.POST.get('title')
+    personaldata.whatsapp = request.POST.get('whatsapp')
+    personaldata.save()
+    return redirect(reverse('portifolio:home'))
 
 
 def createsocialmedia(request):
@@ -73,16 +73,14 @@ def createsocialmedia(request):
 
 
 def editsocialmedia(request):
+    id = request.POST.get('minicard_id')
+    socialmedia = MiniCard.objects.get(id=id)
+
     if request.method == 'POST':
-        id = request.POST.get('minicard_id')
-        name = request.POST.get('name')
-        icon = request.POST.get('icon')
-        link = request.POST.get('link')
+        socialmedia.name = request.POST.get('name')
+        socialmedia.icon = request.POST.get('icon')
+        socialmedia.link = request.POST.get('link')
 
-        socialmedia = MiniCard.objects.get(id=id)
-
-        socialmedia = MiniCard(
-            id=id, name=name, icon=icon, link=link)
         socialmedia.save()
         return redirect(reverse('portifolio:home'))
 
@@ -109,15 +107,12 @@ def createabout(request):
 
 
 def editabout(request):
+    id = request.POST.get('about_id')
+    aboutmedata = About.objects.get(id=id)
     if request.method == 'POST':
-        id = request.POST.get('about_id')
-        title = request.POST.get('title')
-        about_me = request.POST.get('aboutme')
+        aboutmedata.title = request.POST.get('title')
+        aboutmedata.about_me = request.POST.get('aboutme')
 
-        aboutmedata = About.objects.get(id=id)
-
-        aboutmedata = About(
-            id=id, title=title, aboutme=about_me)
         aboutmedata.save()
         return redirect(reverse('portifolio:home'))
 
@@ -131,15 +126,13 @@ def createbarprogress(request):
 
 
 def editbarprogress(request):
+    id = request.POST.get('barprogress_id')
+    barprogress = BarProgress.objects.get(id=id)
+
     if request.method == 'POST':
-        id = request.POST.get('barprogress_id')
-        title = request.POST.get('title')
-        progress = request.POST.get('progress')
+        barprogress.title = request.POST.get('title')
+        barprogress.progress = request.POST.get('progress')
 
-        barprogress = BarProgress.objects.get(id=id)
-
-        barprogress = BarProgress(
-            id=id, title=title, progress=progress)
         barprogress.save()
         return redirect(reverse('portifolio:home'))
 
@@ -191,19 +184,17 @@ def createcards(request):
 
 
 def editcard(request):
-    if request.method == 'POST':
-        id = request.POST.get('card_id')
-        title = request.POST.get('title')
-        subtitle = request.POST.get('subtitle')
-        icon = request.POST.get('icon')
-        linkgithub = request.POST.get('linkgithub')
-        linkdeploy = request.POST.get('linkdeploy')
-        datainfo = request.POST.get('datainfo')
-        section = request.POST.get('section')
+    id = request.POST.get('card_id')
+    card = Card.objects.get(id=id)
 
-        card = Card.objects.get(id=id)
-        card = Card(id=id, title=title, subtitle=subtitle, icon=icon,
-                    linkgithub=linkgithub, linkdeploy=linkdeploy,
-                    datainfo=datainfo, section=section)
+    if request.method == 'POST':
+        card.title = request.POST.get('title')
+        card.subtitle = request.POST.get('subtitle')
+        card.icon = request.POST.get('icon')
+        card.linkgithub = request.POST.get('linkgithub')
+        card.linkdeploy = request.POST.get('linkdeploy')
+        card.datainfo = request.POST.get('datainfo')
+        card.section = request.POST.get('section')
+
         card.save()
         return redirect(reverse('portifolio:home'))

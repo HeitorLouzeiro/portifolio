@@ -5,6 +5,7 @@
 
 {% block action %}
 action={% url 'portifolio:createcards' %}
+{% block file %}{% endblock file %}
 {% endblock %}
 {% block forms %}
     {{ form_card.as_p }}

@@ -5,6 +5,7 @@
 
 {% block action %}
 action={% url 'portifolio:editbarprogress' %}
+{% block file %}{% endblock file %}
 {% endblock %}
 {% block forms %}
 <input type="hidden" name="barprogress_id" value="{{ barprogress.id }}">

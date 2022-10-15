@@ -29,6 +29,10 @@ action={% url 'portifolio:editpersonaldata' %}
             <input class="form-control" name="whatsapp" value="{{ personaldata.whatsapp }}">
         </div>
         
+        <div class="mb-3">
+            <label class="form-label">Cover</label>
+            <input class="form-control" type="file" name="cover">
+        </div>
     {%endfor%}
     {% endblock %}
     {% block button-action %}<button type="submit" class="btn btn-warning">Save</button>{% endblock button-action %}

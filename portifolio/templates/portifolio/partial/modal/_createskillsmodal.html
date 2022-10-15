@@ -5,6 +5,7 @@
 
 {% block action %}
 action={% url 'portifolio:createskills' %}
+{% block file %}{% endblock file %}
 {% endblock %}
 {% block forms %}
     {{ form_minicard.as_p }}

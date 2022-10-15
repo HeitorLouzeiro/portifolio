@@ -5,6 +5,7 @@
 
 {% block action %}
 action={% url 'portifolio:editsocialmedia' %}
+{% block file %}{% endblock file %}
 {% endblock %}
 {% block forms %}
 <input type="hidden" name ="minicard_id" value="{{ minicard.id }}">

@@ -5,7 +5,9 @@
 
 {% block action %}
 action={% url 'portifolio:editskills' %}
-{% endblock %}{% block forms %}
+{% block file %}{% endblock file %}
+{% endblock %}
+{% block forms %}
 <input type="hidden" name ="minicard_id" value="{{ minicard.id }}">
 
 <div class="form-floating mb-3">

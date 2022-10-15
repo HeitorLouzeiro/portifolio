@@ -6,7 +6,7 @@
         <h1 class="modal-title">{% block modal-title %} Home {% endblock modal-title %}</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form {% block action %} action={% url 'portifolio:createpersonaldata' %} {% endblock action %}  method="POST">
+      <form {% block action %} action={% url 'portifolio:createpersonaldata' %} {% endblock action %}  method="POST" {% block file %}enctype="multipart/form-data"{% endblock file %}>
         {% csrf_token %}
         <div class="modal-body">
           {% block forms %}

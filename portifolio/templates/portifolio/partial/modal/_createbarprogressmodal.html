@@ -5,6 +5,7 @@
 
 {% block action %}
 action={% url 'portifolio:createbarprogress' %}
+{% block file %}{% endblock file %}
 {% endblock %}
 {% block forms %}
     {{ form_barprogress.as_p }}
