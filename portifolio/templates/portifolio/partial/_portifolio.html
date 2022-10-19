@@ -1,38 +1,35 @@
+<!-- portfolio section starts -->
 
-    <!-- portfolio section starts  -->
+<section class="portfolio" id="portfolio">
+  <h1 class="heading">my <span>portfolio</span></h1>
 
-    <section class="portfolio" id="portfolio">
-
-        <h1 class="heading"> my <span>portfolio</span> </h1>
-
-        <div class="box-container">
-            {% for card in cards %}
-                {% if card.section == '4' %}
-                    <div class="box">
-                        {% if card.cover %}
-                            <img src="{{card.cover.url}}">
-                        {% endif %}
-                        <div class="content">
-                            <h3>{{card.title}}</h3>
-                            <div class="link">
-                                {% if card.linkdeploy %}
-                                    <a href="{{card.linkdeploy}}" target="blank">
-                                        <i class="fas fa-laptop"></i>
-                                    </a>
-                                {% endif %}
-                                                        
-                                {% if card.linkgithub %}
-                                    <a href="{{card.linkgithub}}" target="blank">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
+  <div class="box-container">
+    {% for card in cards %}
+      {% if card.section == '4' %}
+        <div class="box-card">
+          <div class="box">
+            {% if card.cover %}
+              <img src="{{ card.cover.url }}" />
+            {% endif %}
+            <div class="content">
+              <h3>{{ card.title }}</h3>
+              <div class="link">
+                {% if card.linkdeploy %}
+                  <a href="{{ card.linkdeploy }}" target="_blank"><i class="fas fa-laptop"></i></a>
                 {% endif %}
-            {% endfor %}
+
+                {% if card.linkgithub %}
+                  <a href="{{ card.linkgithub }}" target="_blank"><i class="fab fa-github"></i></a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% include 'portifolio/partial/_buttoncard.html' %}
         </div>
-
-    </section>
-
-    <!-- portfolio section ends -->
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+{% include 'portifolio/partial/modal/_editcardmodal.html' %}
+{% include 'portifolio/partial/modal/_deletecardmodal.html' %}
+<!-- portfolio section ends -->

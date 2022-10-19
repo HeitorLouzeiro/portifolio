@@ -111,7 +111,7 @@ def editabout(request):
     aboutmedata = About.objects.get(id=id)
     if request.method == 'POST':
         aboutmedata.title = request.POST.get('title')
-        aboutmedata.about_me = request.POST.get('aboutme')
+        aboutmedata.aboutme = request.POST.get('aboutme')
 
         aboutmedata.save()
         return redirect(reverse('portifolio:home'))
@@ -176,7 +176,7 @@ def editskills(request):
 
 
 def createcards(request):
-    form = CardForm(request.POST or None)
+    form = CardForm(request.POST, request.FILES or None)
 
     if form.is_valid():
         form.save()
@@ -188,6 +188,10 @@ def editcard(request):
     card = Card.objects.get(id=id)
 
     if request.method == 'POST':
+        if len(request.FILES) != 0:
+            if len(card.cover) > 0:
+                os.remove(card.cover.path)
+            card.cover = request.FILES['cover']
         card.title = request.POST.get('title')
         card.subtitle = request.POST.get('subtitle')
         card.icon = request.POST.get('icon')
@@ -198,3 +202,18 @@ def editcard(request):
 
         card.save()
         return redirect(reverse('portifolio:home'))
+
+
+def deletecard(request):
+    if not request.POST:
+        raise Http404()
+    id = request.POST.get('card_id')
+
+    card = Card.objects.get(id=id)
+
+    if not card:
+        raise Http404()
+    card.delete()
+    os.remove(card.cover.path)
+
+    return redirect(reverse('portifolio:home'))

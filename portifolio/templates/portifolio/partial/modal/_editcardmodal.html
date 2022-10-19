@@ -1,59 +1,68 @@
 {% extends 'portifolio/partial/modal/_createpersonaldatamodal.html' %}
 
-{% block modal-id %}id="editcard{{card.id}}"{% endblock modal-id %}
-{% block modal-title %}Edit {{card.name}}{% endblock modal-title %}
+{% block modal-id %}id="editcard{{ card.id }}"{% endblock modal-id %}
+{% block modal-title %}Edit {{ card.name }}{% endblock modal-title %}
 
 {% block action %}
-action={% url 'portifolio:editcard' %}
-{% block file %}{% endblock file %}
+  action={% url 'portifolio:editcard' %}
 {% endblock %}
+
 {% block forms %}
-<input type="hidden" name ="card_id" value="{{ card.id }}">
-<input type="hidden" name ="section" value="{{ card.section }}">
+  <input type="hidden" name="card_id" value="{{ card.id }}" />
+  <input type="hidden" name="section" value="{{ card.section }}" />
 
-{% if card.title %}
-<div class="form-floating mb-3">
-    <input class="form-control" name="title" placeholder="name" value="{{ card.title }}">
-    <label class="form-label">Title</label>
-</div>
-{% endif %}
-
-{% if card.subtitle %}
-<div class="form-floating mb-3">
-    <input class="form-control" name="subtitle" placeholder="subtitle" value="{{ card.subtitle }}">
-    <label class="form-label">Subtitle</label>
-</div>
-{% endif %}
-
-{% if card.icon %}
-<div class="form-floating mb-3">
-    <input class="form-control" name="icon" placeholder="icon" value="{{ card.icon }}">
-    <label class="form-label">Icon</label>
-</div>
-{% endif %}
-
-{% if card.linkgithub %}
-<div class="form-floating mb-3">
-    <input class="form-control" name="linkgithub" placeholder="github" value="{{ card.linkgithub }}">
-    <label class="form-label">Github</label>
-</div>
-{% endif %}
-
-{% if card.linkdeploy %}
-<div class="form-floating mb-3">
-    <input class="form-control" name="deploy" placeholder="deploy" value="{{ card.linkdeploy }}">
-    <label class="form-label">Deploy</label>
-</div>
-{% endif %}
-
-{% if card.datainfo %}
+  {% if card.section > '0' %}
     <div class="form-floating mb-3">
-        <input class="form-control" name="datainfo" placeholder="info" value="{{ card.datainfo }}">
-        <label class="form-label">Data info</label>
+      <input class="form-control" name="title" placeholder="name" value="{{ card.title }}" />
+      <label class="form-label">Title</label>
     </div>
-{% endif %}
+  {% endif %}
+
+  {% if card.section != '4' %}
+    <div class="form-floating mb-3">
+      <input class="form-control" name="subtitle" placeholder="subtitle" value="{{ card.subtitle }}" />
+      <label class="form-label">Subtitle</label>
+    </div>
+  {% endif %}
+
+  {% if card.section == '3' %}
+    <div class="form-floating mb-3">
+      <input class="form-control" name="icon" placeholder="icon" value="{{ card.icon }}" />
+      <label class="form-label">Icon</label>
+    </div>
+  {% endif %}
+
+  {% if card.section == '4' %}
+      <div class="form-floating mb-3">
+        <input class="form-control" name="linkgithub" placeholder="github" value="{{ card.linkgithub }}" />
+        <label class="form-label">Github</label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input class="form-control" name="linkdeploy" placeholder="linkdeploy" value="{{ card.linkdeploy }}" />
+        <label class="form-label">Deploy</label>
+      </div>
+  {% endif %}
+  
+  {% if card.section == '2' %}
+    <div class="form-floating mb-3">
+      <input class="form-control" name="datainfo" placeholder="info" value="{{ card.datainfo }}" />
+      <label class="form-label">Data info</label>
+    </div>
+  {% endif %}
+  
+  {% if card.section == '4' %}
+    {% if card.cover %}
+      <div class="mb-3">
+        <label class="form-label">Cover</label>
+        <input class="form-control" type="file" name="cover" />
+      </div>
+      <div class="modal-img">
+          <img src="{{ card.cover.url }}" />
+      </div>
+    {% endif %}
+  {% endif %}
 
 {% endblock %}
+
 {% block button-action %}<button type="submit" class="btn btn-warning">Save</button>{% endblock button-action %}
-
-

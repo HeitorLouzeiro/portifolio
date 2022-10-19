@@ -33,17 +33,18 @@ urlpatterns = [
     path('edit/socialmedia/',
          views.editsocialmedia, name='editsocialmedia'),
 
-    path('delete/minicard/<int:minicard_id>',
+    path('delete/minicard/<int:minicard_id>/',
          views.deleteminicard, name='deleteminicard'),
 
     path('create/about/', views.createabout, name='createabout'),
     path('edit/about/',
          views.editabout, name='editabout'),
 
-    path('create/barprogress/', views.createbarprogress, name='createbarprogress'),
+    path('create/barprogress/', views.createbarprogress,
+         name='createbarprogress'),
     path('edit/barprogress/',
          views.editbarprogress, name='editbarprogress'),
-    path('delete/barprogress/<int:barprogress_id>',
+    path('delete/barprogress/<int:barprogress_id>/',
          views.deletebarprogress, name='deletebarprogress'),
 
     path('create/skills/', views.createskills, name='createskills'),
@@ -53,5 +54,7 @@ urlpatterns = [
     path('create/cards/', views.createcards, name='createcards'),
     path('edit/card/',
          views.editcard, name='editcard'),
+    path('delete/card/', views.deletecard, name='deletecard'),
+
 
 ]

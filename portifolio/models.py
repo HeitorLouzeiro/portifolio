@@ -9,9 +9,9 @@ class PersonalData(models.Model):
     title = models.CharField(max_length=80)
     whatsapp = models.CharField(max_length=100, blank=True)
     cover = models.ImageField(
-        upload_to='portifolio/user/cover/%Y/%m/%d/', blank=True)
+        upload_to='portifolio/user/cover/', blank=True)
     pdf = models.FileField(
-        upload_to='portifolio/user/pdf/%Y/%m/%d/', blank=True)
+        upload_to='portifolio/user/pdf/', blank=True)
 
     def __str__(self):
         return self.name+" "+self.profession
@@ -51,14 +51,14 @@ class Card(models.Model):
         ('4', 'Portfolio'),
     )
     title = models.CharField(max_length=30)
-    subtitle = models.CharField(max_length=100)
+    subtitle = models.CharField(max_length=100, null=True, blank=True)
     icon = models.CharField(max_length=100, null=True, blank=True)
     linkgithub = models.CharField(max_length=100, null=True, blank=True)
     linkdeploy = models.CharField(max_length=100, null=True, blank=True)
     datainfo = models.CharField(max_length=30, null=True, blank=True)
     section = models.CharField(max_length=1, choices=SECTION)
     cover = models.ImageField(
-        upload_to='portifolio/projects/cover/%Y/%m/%d/', blank=True)
+        upload_to='portifolio/projects/cover/', blank=True)
 
     def __str__(self):
         return self.title+" "+self.section
