@@ -60,11 +60,29 @@ a{
     font-size: 1.7rem;
     cursor: pointer;
     background: none;
-    color:var(--black);
+    color: #000
     box-shadow: var(--box-shadow);
 }
 
 .btn:hover{
+    box-shadow: var(--box-shadow-inset);
+    color:var(--green);
+}
+
+
+.btn-profile{
+    margin-top: 1rem;
+    display: inline-block;
+    padding:1rem 3.5rem;
+    border-radius: .5rem;
+    font-size: 1.7rem;
+    cursor: pointer;
+    background: none;
+    color: var(--light-color);
+    box-shadow: var(--box-shadow);
+}
+
+.btn-profile:hover{
     box-shadow: var(--box-shadow-inset);
     color:var(--green);
 }
