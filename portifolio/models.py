@@ -62,3 +62,7 @@ class Card(models.Model):
 
     def __str__(self):
         return self.title+" "+self.section
+
+    def delete(self, *args, **kwargs):
+        self.cover.delete()
+        super().delete(*args, **kwargs)
