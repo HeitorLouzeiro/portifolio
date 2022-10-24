@@ -28,6 +28,8 @@ urlpatterns = [
     path('edit/personaldata/',
          views.editpersonaldata, name='editpersonaldata'),
 
+    path('views/pdf/', views.pdf, name='pdf'),
+
     path('create/socialmedia/', views.createsocialmedia,
          name='createsocialmedia'),
     path('edit/socialmedia/',

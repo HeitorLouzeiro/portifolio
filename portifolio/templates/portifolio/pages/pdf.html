@@ -1,0 +1,115 @@
+{%extends 'basepdf.html'%}
+{% block title %}
+PDF - 
+{% endblock %}
+<body>
+  {% block content %}
+  <div class="container">
+    <div class="left_Side">
+      <div class="profileText">
+        <div class="imgBx">
+          {% for personaldata in personaldatas %}
+            {% if personaldata.cover %}
+              <img src="{{ personaldata.cover.url }}" alt="{{ personaldata.name }}" />
+            {% endif %}
+        </div>
+        <div>
+          <h2>
+            {{ personaldata.name }}
+            <br />
+            <span>{{ personaldata.profession }}</span>
+          </h2>
+          {% endfor %}
+        </div>
+        <div class="contactInfo">
+          <h3 class="title">Contact Info</h3>
+          <ul>
+            <li>
+              {% for personaldata in personaldatas %}
+                <a href="{{ personaldata.whatsapp }}" target="_blank">
+                  <span class="icon"><i class="fab fa-whatsapp"></i></span>
+                  <span class="text">Whatsapp</span>
+                </a>
+              {% endfor %}
+            </li>
+            <li class="mini-card">  
+              {% for minicard in minicards %}
+                {% if minicard.skills == False %}
+                  <a href="{{ minicard.link }}" target="_blank">
+                    <span class="icon"><i class="{{ minicard.icon }}"></i></span>
+                    <span class="text">{{minicard.name}}</span>
+                  </a>
+                {%endif%}
+              {%endfor%}
+            </li>
+          </ul>
+        </div>
+        <div class="contactInfo education">
+          <h3 class="title">Education</h3>
+          <ul>
+            {% for card in cards %}
+              {% if card.section == '2' %}
+              <li>
+                <h5>{{ card.datainfo }}</h5>
+                <h4>{{ card.title }}</h4>
+                <h4>{{ card.subtitle }}</h4>
+              </li>
+              {%endif%}
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="right_Side">
+      <div class="about">
+        <h2 class="title2">Profile</h2>
+        {% for aboutdata in about %}
+          <p>{{ aboutdata.aboutme }}</p>
+        {% endfor %}
+      </div>
+      <div class="about">
+        <h2 class="title2">Projects</h2>
+        <div class="box">
+          <div class="box-container">
+            {% for card in cards %}
+              {% if card.section == '4' %}
+                <div class="box-card">
+                    <h4>
+                      {{card.title}}
+                    </h4>
+                    {% if card.linkdeploy %}
+                    <a href="{{card.linkdeploy}}" class="fas fa-laptop" target="_blank">
+                      Deploy
+                    </a>
+                    |
+                    {% if card.linkgithub %}
+                    <a href="{{card.linkgithub}}" class="fab fa-github" target="_blank">
+                      Github
+                    </a>
+                  {% endif %}
+                {% endif %}
+                </div>
+                {%endif%}
+            {%endfor%}
+            </div>
+          </div>
+        </div>
+        <div class="about skills">
+          <h2 class="title2">Professional Skills</h2>
+          {% for barprogress in barprogress %}
+            <div class="box">
+              <h4>{{barprogress.title}}</h4>
+              <div class="percent">
+                <div style="width:{{ barprogress.progress }}"></div>
+              </div>
+            </div>
+          {%endfor%}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+{% endblock content %}
+</body>
+</html>

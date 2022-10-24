@@ -574,7 +574,7 @@ a{
     gap:2rem;
 }
 .curriculo .box-container-educacao{
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
     gap:2rem;
 }
@@ -746,7 +746,9 @@ a{
 .portfolio .box-container .box:hover .content{
     transform: scale(1);
 }
-
+.portfolio a{
+    color:black;
+}
 .portfolio .box-container .box .content h3{
     font-size: 2.5rem;
     color:var(--black);
@@ -758,6 +760,7 @@ a{
 
 .portfolio .box-container .box .content i{
     font-size: 2.5rem;
+    color: black;
     padding: 10px;
     background: #fff;
     box-shadow: var(--box-shadow);
@@ -771,10 +774,12 @@ a{
     transform: translateY(0rem);
     opacity: 1;
 }
+
 .portfolio .box-container .box:hover .content i{
     transform: translateY(0rem);
     opacity: 1;
 }
+
 
 .portfolio .box-container .box .content i:hover{
     box-shadow: var(--box-shadow-inset);
