@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Responsive CV using Html & CSS</title>
   <link rel="stylesheet" type="text/css" href="css/pdf.css" />
-</head>
 
+
+
+</head>
 <body>
-  <div class="container">
+  <div class="container" id="container">
     <div class="left_Side">
       <div class="profileText">
         <div class="imgBx">
@@ -68,6 +70,10 @@
     </div>
 
     <div class="right_Side">
+      <div class="about">
+        <button id="btn-print" class="btn-pdf"> Baixar</button>
+        <button id="btn-print" class="btn-pdf"> Portfolio</button>
+      </div>
       <div class="about">
         <h2 class="title2">Profile</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -147,6 +153,12 @@
     </div>
 
   </div>
+<script>
+  const printBtn = document.getElementById('btn-print');
+  printBtn.addEventListener('click',function(){
+    print();
+  })
+</script>
 </body>
 
 </html>
