@@ -329,6 +329,7 @@ a{
 }
 
 .home{
+    display: flex;
     flex-flow: column;
     align-items: center;
     justify-content: center;
@@ -372,7 +373,11 @@ a{
     box-shadow: var(--box-shadow-inset);
     color:var(--green);
 }
-
+.about{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
 .about .row{
     display: flex;
     align-items: center;
