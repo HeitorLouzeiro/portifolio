@@ -25,8 +25,8 @@ i{
 .container{
     position: relative;
     width: 100%;
-    max-width: 1000px;
-    min-height: 1000px;
+    max-width: 1240px;
+    min-height: 1100px;
     background:#fff;
     margin: 50px;
     display: grid;
@@ -37,7 +37,7 @@ i{
 .container .left_Side{
     position: relative;
     background: #003147;
-    padding: 40px;
+    padding: 10px;
 }
 
 .profileText{
@@ -46,13 +46,12 @@ i{
     flex-direction: column;
     align-items: center;
     padding-bottom: 20px;
-    border-bottom: 1px solid Orgba(255,255,255,0.2);
 }
 
 .profileText .imgBx{
     position: relative;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     overflow: hidden;
 }
@@ -68,7 +67,7 @@ i{
 
 .profileText h2{
     color: #fff;
-    font-size: 1.5em;
+    font-size: 15.96px;
     margin-top: 20px;
     text-transform: uppercase;
     text-align: center;
@@ -85,10 +84,10 @@ i{
 }
 
 .title{
+    font-size:15.96px;
     color: #fff;
     text-transform: uppercase;
     font-weight: 600;
-    Letter-spacing: 1px;
     margin-bottom: 20px;
 }
 
@@ -107,7 +106,6 @@ i{
     display: inline-block;
     width: 30px;
     font-size: 18px;
-    color: #03a9f4;
 }
 .contactInfo ul li span{
     color: #fff;
@@ -138,8 +136,32 @@ li.mini-card{
     background: #fff;
     padding: 40px;
 }
+
+.btn-pdf{
+    background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
+    padding: 15px 20px;
+    border-radius: 40px;
+    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    color: white;
+    font-size: 24px;
+    font-family: Georgia, serif;
+    text-decoration: none;
+    vertical-align: middle;
+}
+.btn-pdf:hover {
+    border-top-color: #28597a;
+    background: #28597a;
+    color: #ccc;
+}
+.btn-pdf:active {
+    border-top-color: #1b435e;
+    background: #1b435e;
+}
+a.btn-pdf{
+    color: #fff;
+}
 .about{
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 .about:last-child{
     margin-bottom: 0;
@@ -156,16 +178,15 @@ p{
 .about .box{
     display: flex;
     flex-direction: row;
-    margin: 20px 0;
 }
 .box-container {
     display: flex;
     flex-wrap: wrap-reverse;
 }
 .about .box-container .box-card{
-    flex: 1 1 18rem;
+    flex: 1 1 13rem;
     text-align: center;
-    padding: 2rem;
+    padding: 10px;
     border-radius: 0.5rem;
     box-shadow: .4rem .4rem 1rem #ccc,-.4rem -.4rem 1rem #fff;
 }
@@ -205,7 +226,6 @@ p{
 @media (max-width: 1000px){
     .container{
         margin: 10px;
-        grid-template-columns: repeat(1,1fr);
     }
 }
 @media (max-width: 600px){
@@ -217,5 +237,21 @@ p{
     }
     .skills .box{
         grid-template-columns: repeat(1,1fr);
+    }
+}
+@media print{
+    .btn-pdf{
+        display: none;
+    }
+    .profileText h2,
+    .contactInfo,
+    .contactInfo ul li span,
+    .contactInfo text,
+    .title,
+    .contactInfo.education h4,
+    .contactInfo.education h4:nth-child(2),
+    i
+    {
+        color:#003147;
     }
 }

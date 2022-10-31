@@ -1,6 +1,8 @@
 {%extends 'basepdf.html'%}
 {% block title %}
-PDF - 
+{% for personaldata in personaldatas %}
+{{personaldata.name}} - 
+{%endfor%}
 {% endblock %}
 <body>
   {% block content %}
@@ -61,6 +63,10 @@ PDF -
       </div>
     </div>
     <div class="right_Side">
+      <div class="about-pdf">
+        <button id="btn-print" class="btn-pdf"> Baixar</button>
+        <a href={% url 'portifolio:home' %} class="btn-pdf">Home</a>
+      </div>
       <div class="about">
         <h2 class="title2">Profile</h2>
         {% for aboutdata in about %}
@@ -110,6 +116,12 @@ PDF -
     </div>
 
   </div>
+  <script>
+    const printBtn = document.getElementById('btn-print');
+    printBtn.addEventListener('click',function(){
+      print();
+    })
+  </script>
 {% endblock content %}
 </body>
 </html>

@@ -17,6 +17,7 @@ Including another URLconf
 from django.urls import path
 
 from . import views
+from .pdf import pdf
 
 app_name = 'portifolio'
 
@@ -28,7 +29,7 @@ urlpatterns = [
     path('edit/personaldata/',
          views.editpersonaldata, name='editpersonaldata'),
 
-    path('views/pdf/', views.pdf, name='pdf'),
+    path('views/pdf/', pdf, name='pdf'),
 
     path('create/socialmedia/', views.createsocialmedia,
          name='createsocialmedia'),

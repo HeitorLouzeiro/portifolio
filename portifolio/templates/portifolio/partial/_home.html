@@ -6,7 +6,7 @@
       <h3>{{ personaldata.name }}</h3>
       <p>{{ personaldata.title }}</p>
     {% endfor %}
-    <a href="#" class="btn-profile">download CV</a>
+    <a href={% url 'portifolio:pdf' %} class="btn-profile">To view CV</a>
   </div>
 
   <div class="share">
