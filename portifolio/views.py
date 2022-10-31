@@ -1,6 +1,7 @@
 import os
 
-from django.http.response import Http404, HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.http.response import Http404
 from django.shortcuts import redirect, render
 from django.urls import reverse
 
@@ -40,6 +41,7 @@ def home(request):
     return render(request, template_name, context)
 
 
+@login_required(login_url='accounts:loginUser', redirect_field_name='next')
 def createpersonaldata(request):
     form = PersonalDataForm(request.POST, request.FILES or None)
 
@@ -48,6 +50,7 @@ def createpersonaldata(request):
         return redirect(reverse('portifolio:home'))
 
 
+@login_required(login_url='accounts:loginUser', redirect_field_name='next')
 def editpersonaldata(request):
     id = request.POST.get('personaldata_id')
     personaldata = PersonalData.objects.get(id=id)
@@ -64,6 +67,7 @@ def editpersonaldata(request):
     return redirect(reverse('portifolio:home'))
 
 
+@login_required(login_url='accounts:loginUser', redirect_field_name='next')
 def createsocialmedia(request):
     form = MiniCardForm(request.POST or None)
 
@@ -72,6 +76,7 @@ def createsocialmedia(request):
         return redirect(reverse('portifolio:home'))
 
 
+@login_required(login_url='accounts:loginUser', redirect_field_name='next')
 def editsocialmedia(request):
     id = request.POST.get('minicard_id')
     socialmedia = MiniCard.objects.get(id=id)
@@ -85,6 +90,7 @@ def editsocialmedia(request):
         return redirect(reverse('portifolio:home'))
 
 
+@login_required(login_url='accounts:loginUser', redirect_field_name='next')
 def deleteminicard(request, minicard_id):
     if not request.POST:
         raise Http404()
@@ -98,6 +104,7 @@ def deleteminicard(request, minicard_id):
     return redirect(reverse('portifolio:home'))
 
 
+@login_required(login_url='accounts:loginUser', redirect_field_name='next')
 def createabout(request):
     form = AboutForm(request.POST or None)
 
@@ -106,6 +113,7 @@ def createabout(request):
         return redirect(reverse('portifolio:home'))
 
 
+@login_required(login_url='accounts:loginUser', redirect_field_name='next')
 def editabout(request):
     id = request.POST.get('about_id')
     aboutmedata = About.objects.get(id=id)
@@ -117,6 +125,7 @@ def editabout(request):
         return redirect(reverse('portifolio:home'))
 
 
+@login_required(login_url='accounts:loginUser', redirect_field_name='next')
 def createbarprogress(request):
     form = BarProgressForm(request.POST or None)
 
@@ -125,6 +134,7 @@ def createbarprogress(request):
         return redirect(reverse('portifolio:home'))
 
 
+@login_required(login_url='accounts:loginUser', redirect_field_name='next')
 def editbarprogress(request):
     id = request.POST.get('barprogress_id')
     barprogress = BarProgress.objects.get(id=id)
@@ -137,6 +147,7 @@ def editbarprogress(request):
         return redirect(reverse('portifolio:home'))
 
 
+@login_required(login_url='accounts:loginUser', redirect_field_name='next')
 def deletebarprogress(request, barprogress_id):
     if not request.POST:
         raise Http404()
@@ -150,6 +161,7 @@ def deletebarprogress(request, barprogress_id):
     return redirect(reverse('portifolio:home'))
 
 
+@login_required(login_url='accounts:loginUser', redirect_field_name='next')
 def createskills(request):
     form = MiniCardForm(request.POST or None)
 
@@ -160,6 +172,7 @@ def createskills(request):
         return redirect(reverse('portifolio:home'))
 
 
+@login_required(login_url='accounts:loginUser', redirect_field_name='next')
 def editskills(request):
     if request.method == 'POST':
         id = request.POST.get('minicard_id')
@@ -175,6 +188,7 @@ def editskills(request):
         return redirect(reverse('portifolio:home'))
 
 
+@login_required(login_url='accounts:loginUser', redirect_field_name='next')
 def createcards(request):
     form = CardForm(request.POST, request.FILES or None)
 
@@ -183,6 +197,7 @@ def createcards(request):
         return redirect(reverse('portifolio:home'))
 
 
+@login_required(login_url='accounts:loginUser', redirect_field_name='next')
 def editcard(request):
     id = request.POST.get('card_id')
     card = Card.objects.get(id=id)
@@ -204,6 +219,7 @@ def editcard(request):
         return redirect(reverse('portifolio:home'))
 
 
+@login_required(login_url='accounts:loginUser', redirect_field_name='next')
 def deletecard(request):
     if not request.POST:
         raise Http404()
