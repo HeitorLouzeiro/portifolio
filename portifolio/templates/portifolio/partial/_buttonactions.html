@@ -1,34 +1,36 @@
-<div class="dropdown">
-  <button onclick="myFunction()" class="dropbtn"><i class="fas fa-plus"></i></button>
-  <div id="myDropdown" class="dropdown-content">
-    {% if personaldatas %}
-      <button type="button" class="btndrop" data-bs-toggle="modal" data-bs-target="#editpersonaldatamodal{{ personaldata.id }}">Edit Home</button>
-    {% else %}
-      <button type="button" class="btndrop" data-bs-toggle="modal" data-bs-target="#createpersonaldatamodal">Create Home</button>
-    {% endif %}
+{% if request.user.is_authenticated %}
+  <div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn"><i class="fas fa-plus"></i></button>
+    <div id="myDropdown" class="dropdown-content">
+      {% if personaldatas %}
+        <button type="button" class="btndrop" data-bs-toggle="modal" data-bs-target="#editpersonaldatamodal{{ personaldata.id }}">Edit Home</button>
+      {% else %}
+        <button type="button" class="btndrop" data-bs-toggle="modal" data-bs-target="#createpersonaldatamodal">Create Home</button>
+      {% endif %}
 
-    {% if about %}
-      <button type="button" class="btndrop" data-bs-toggle="modal" data-bs-target="#editaboutmodal{{ aboutdata.id }}">Edit About</button>
-    {% else %}
-      <button type="button" class="btndrop" data-bs-toggle="modal" data-bs-target="#createaboutmodal">Create About</button>
-    {% endif %}
+      {% if about %}
+        <button type="button" class="btndrop" data-bs-toggle="modal" data-bs-target="#editaboutmodal{{ aboutdata.id }}">Edit About</button>
+      {% else %}
+        <button type="button" class="btndrop" data-bs-toggle="modal" data-bs-target="#createaboutmodal">Create About</button>
+      {% endif %}
 
-    <button type="button" class="btndrop" data-bs-toggle="modal" data-bs-target="#createbarprogressmodal">Create BarProgress</button>
-    <button type="button" class="btndrop" data-bs-toggle="modal" data-bs-target="#createcardmodal">Create Card</button>
+      <button type="button" class="btndrop" data-bs-toggle="modal" data-bs-target="#createbarprogressmodal">Create BarProgress</button>
+      <button type="button" class="btndrop" data-bs-toggle="modal" data-bs-target="#createcardmodal">Create Card</button>
+    </div>
   </div>
-</div>
 
-{% if personaldatas %}
-  {% include 'portifolio/partial/modal/_editpersonaldatamodal.html' %}
-{% else %}
-  {% include 'portifolio/partial/modal/_createpersonaldatamodal.html' %}
-{% endif %}
+  {% if personaldatas %}
+    {% include 'portifolio/partial/modal/_editpersonaldatamodal.html' %}
+  {% else %}
+    {% include 'portifolio/partial/modal/_createpersonaldatamodal.html' %}
+  {% endif %}
 
-{% if about %}
-  {% include 'portifolio/partial/modal/_editaboutmodal.html' %}
-{% else %}
-  {% include 'portifolio/partial/modal/_createaboutmodal.html' %}
-{% endif %}
-  
-{% include 'portifolio/partial/modal/_createbarprogressmodal.html' %}
-{% include 'portifolio/partial/modal/_createcardmodal.html' %}
+  {% if about %}
+    {% include 'portifolio/partial/modal/_editaboutmodal.html' %}
+  {% else %}
+    {% include 'portifolio/partial/modal/_createaboutmodal.html' %}
+  {% endif %}
+    
+  {% include 'portifolio/partial/modal/_createbarprogressmodal.html' %}
+  {% include 'portifolio/partial/modal/_createcardmodal.html' %}
+{%endif%}

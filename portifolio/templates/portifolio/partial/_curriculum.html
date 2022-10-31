@@ -11,17 +11,23 @@
     {% for minicard in minicards %}
       <div class="mini-card">
         {% if minicard.skills == True %}
-          <a href="{{ minicard.link }}" class="fab" target="blank"><img src="{{ minicard.icon }}" /></a>
-          <div class="button-card">
-            <button type="button" data-bs-toggle="modal" data-bs-target="#editskills{{ minicard.id }}"><i class="fas fa-edit"></i></button>
-            <button type="button" data-bs-toggle="modal" data-bs-target="#deleteminicard{{ minicard.id }}"><i class="fas fa-trash-alt"></i></button>
-          </div>
+          <a href="{{ minicard.link }}" class="fab" target="blank">
+            <img src="{{ minicard.icon }}">
+          </a>
+            {% if request.user.is_authenticated %}
+              <div class="button-card">
+                <button type="button" data-bs-toggle="modal" data-bs-target="#editskills{{ minicard.id }}"><i class="fas fa-edit"></i></button>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#deleteminicard{{ minicard.id }}"><i class="fas fa-trash-alt"></i></button>
+              </div>
+            {% endif %}
         {% endif %}
         {% include 'portifolio/partial/modal/_editskillsmodal.html' %}
         {% include 'portifolio/partial/modal/_deleteminicardamodal.html' %}
       </div>
     {% endfor %}
-    <button type="button" class="plus-card" data-bs-toggle="modal" data-bs-target="#createskills"><i class="fas fa-plus"></i></button>
+    {% if request.user.is_authenticated %}
+      <button type="button" class="plus-card" data-bs-toggle="modal" data-bs-target="#createskills"><i class="fas fa-plus"></i></button>
+    {%endif%}
   </div>
 
   <h3 class="heading">
@@ -49,4 +55,5 @@
 {% include 'portifolio/partial/modal/_createskillsmodal.html' %}
 {% include 'portifolio/partial/modal/_editcardmodal.html' %}
 {% include 'portifolio/partial/modal/_deletecardmodal.html' %}
+
 <!-- my curriculum section ends -->
