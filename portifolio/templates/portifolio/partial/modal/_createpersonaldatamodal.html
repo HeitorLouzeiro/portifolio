@@ -1,3 +1,4 @@
+{% load crispy_forms_tags %}
 {% if request.user.is_authenticated %}
 <!-- Modal -->
 <div class="modal fade" {% block modal-id %} id="createpersonaldatamodal" {% endblock modal-id %} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
@@ -11,7 +12,7 @@
         {% csrf_token %}
         <div class="modal-body">
           {% block forms %}
-          {{ form_personaldata.as_p }}
+            {{ form_personaldata|crispy }}
           {% endblock forms %}
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

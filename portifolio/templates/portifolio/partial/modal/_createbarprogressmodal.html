@@ -1,5 +1,5 @@
 {% extends 'portifolio/partial/modal/_createpersonaldatamodal.html' %}
-
+{% load crispy_forms_tags %}
 {% block modal-id %}id="createbarprogressmodal"{% endblock modal-id %}
 {% block modal-title %}Create Bar Progress{% endblock modal-title %}
 
@@ -8,6 +8,6 @@ action={% url 'portifolio:createbarprogress' %}
 {% block file %}{% endblock file %}
 {% endblock %}
 {% block forms %}
-    {{ form_barprogress.as_p }}
+    {{ form_barprogress|crispy }}
 {% endblock %}
 

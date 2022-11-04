@@ -1,5 +1,5 @@
 {% extends 'portifolio/partial/modal/_createpersonaldatamodal.html' %}
-
+{% load crispy_forms_tags %}
 {% block modal-id %}id="createcardmodal"{% endblock modal-id %}
 {% block modal-title %}Create Cads{% endblock modal-title %}
 
@@ -7,6 +7,6 @@
 action={% url 'portifolio:createcards' %}
 {% endblock %}
 {% block forms %}
-    {{ form_card.as_p }}
+    {{ form_card|crispy }}
 {% endblock %}
 

@@ -1,5 +1,5 @@
 {% extends 'portifolio/partial/modal/_createpersonaldatamodal.html' %}
-
+{% load crispy_forms_tags %}
 {% block modal-id %}id="createsocialmedia"{% endblock modal-id %}
 {% block modal-title %}Create Social Media{% endblock modal-title %}
 
@@ -8,6 +8,6 @@ action={% url 'portifolio:createsocialmedia' %}
 {% block file %}{% endblock file %}
 {% endblock %}
 {% block forms %}
-    {{ form_minicard.as_p }}
+    {{ form_minicard|crispy }}
 {% endblock %}
 
