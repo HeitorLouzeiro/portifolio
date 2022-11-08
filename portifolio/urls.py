@@ -59,5 +59,5 @@ urlpatterns = [
          views.editcard, name='editcard'),
     path('delete/card/', views.deletecard, name='deletecard'),
 
-
+    path('send/email/', views.sendemail, name='sendemail'),
 ]

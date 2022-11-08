@@ -1,6 +1,7 @@
 import os
 
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 from django.http.response import Http404
 from django.shortcuts import redirect, render
 from django.urls import reverse
@@ -8,6 +9,37 @@ from django.urls import reverse
 from .forms import (AboutForm, BarProgressForm, CardForm, MiniCardForm,
                     PersonalDataForm)
 from .models import About, BarProgress, Card, MiniCard, PersonalData
+
+
+# url dinamicas
+def url_home():
+    url = redirect(reverse('portifolio:home')+f'#home')  # noqa
+    return url
+
+
+def url_about():
+    url = redirect(reverse('portifolio:home')+f'#about')  # noqa
+    return url
+
+
+def url_curriculum():
+    url = redirect(reverse('portifolio:home')+f'#curriculo')  # noqa
+    return url
+
+
+def url_services():
+    url = redirect(reverse('portifolio:home')+f'#services')  # noqa
+    return url
+
+
+def url_portfolio():
+    url = redirect(reverse('portifolio:home')+f'#portfolio')  # noqa
+    return url
+
+
+def url_contact():
+    url = redirect(reverse('portifolio:home')+f'#contact')  # noqa
+    return url
 
 
 # Create your views here.
@@ -47,7 +79,7 @@ def createpersonaldata(request):
 
     if form.is_valid():
         form.save()
-        return redirect(reverse('portifolio:home'))
+        return url_home()
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
@@ -64,7 +96,7 @@ def editpersonaldata(request):
     personaldata.title = request.POST.get('title')
     personaldata.whatsapp = request.POST.get('whatsapp')
     personaldata.save()
-    return redirect(reverse('portifolio:home'))
+    return url_home()
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
@@ -73,7 +105,7 @@ def createsocialmedia(request):
 
     if form.is_valid():
         form.save()
-        return redirect(reverse('portifolio:home'))
+    return url_home()
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
@@ -87,7 +119,7 @@ def editsocialmedia(request):
         socialmedia.link = request.POST.get('link')
 
         socialmedia.save()
-        return redirect(reverse('portifolio:home'))
+    return url_home()
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
@@ -99,9 +131,12 @@ def deleteminicard(request, minicard_id):
 
     if not minicard:
         raise Http404()
-    minicard.delete()
-
-    return redirect(reverse('portifolio:home'))
+    if minicard.skills is False:
+        minicard.delete()
+        return url_home()
+    else:
+        minicard.delete()
+        return url_curriculum()
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
@@ -110,7 +145,7 @@ def createabout(request):
 
     if form.is_valid():
         form.save()
-        return redirect(reverse('portifolio:home'))
+        return url_about()
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
@@ -122,7 +157,7 @@ def editabout(request):
         aboutmedata.aboutme = request.POST.get('aboutme')
 
         aboutmedata.save()
-        return redirect(reverse('portifolio:home'))
+        return url_about()
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
@@ -131,7 +166,7 @@ def createbarprogress(request):
 
     if form.is_valid():
         form.save()
-        return redirect(reverse('portifolio:home'))
+        return url_about()
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
@@ -144,7 +179,7 @@ def editbarprogress(request):
         barprogress.progress = request.POST.get('progress')
 
         barprogress.save()
-        return redirect(reverse('portifolio:home'))
+        return url_about()
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
@@ -158,7 +193,7 @@ def deletebarprogress(request, barprogress_id):
         raise Http404()
     barprogress.delete()
 
-    return redirect(reverse('portifolio:home'))
+    return url_about()
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
@@ -169,7 +204,7 @@ def createskills(request):
         skill = form.save(commit=False)
         skill.skills = True
         skill.save()
-        return redirect(reverse('portifolio:home'))
+        return url_curriculum()
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
@@ -185,7 +220,40 @@ def editskills(request):
         skills = MiniCard(
             id=id, name=name, icon=icon, link=link, skills=True)
         skills.save()
-        return redirect(reverse('portifolio:home'))
+        return url_curriculum()
+
+
+def redirect_action_card(card, cardaction):
+    if cardaction is True:
+        if card.section == '1':
+            card.save()
+            return url_about()
+        elif card.section == '2':
+            card.save()
+            return url_curriculum()
+        elif card.section == '3':
+            card.save()
+            return url_services()
+        elif card.section == '4':
+            card.save()
+            return url_portfolio()
+        else:
+            return redirect(reverse('portifolio:home'))
+    else:
+        if card.section == '1':
+            card.delete()
+            return url_about()
+        elif card.section == '2':
+            card.delete()
+            return url_curriculum()
+        elif card.section == '3':
+            card.delete()
+            return url_services()
+        elif card.section == '4':
+            card.delete()
+            return url_portfolio()
+        else:
+            return redirect(reverse('portifolio:home'))
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
@@ -193,8 +261,9 @@ def createcards(request):
     form = CardForm(request.POST, request.FILES or None)
 
     if form.is_valid():
-        form.save()
-        return redirect(reverse('portifolio:home'))
+        card = form.save(commit=False)
+        cardaction = True
+        return redirect_action_card(card, cardaction)
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
@@ -214,9 +283,8 @@ def editcard(request):
         card.linkdeploy = request.POST.get('linkdeploy')
         card.datainfo = request.POST.get('datainfo')
         card.section = request.POST.get('section')
-
-        card.save()
-        return redirect(reverse('portifolio:home'))
+        cardaction = True
+        return redirect_action_card(card, cardaction)
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
@@ -230,6 +298,26 @@ def deletecard(request):
     if not card:
         raise Http404()
 
-    card.delete()
+    cardaction = False
+    return redirect_action_card(card, cardaction)
 
-    return redirect(reverse('portifolio:home'))
+
+def sendemail(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+        data = {
+            'name': name,
+            'email': email,
+            'subject': subject,
+            'message': message,
+        }
+        message = '''
+        New message: {}
+        From: {}
+        '''.format(data['message'], data['email'])
+        send_mail(data['subject'], message, '', [
+                  'heitorlouzeirodev@gmail.com'])
+    return url_contact()
