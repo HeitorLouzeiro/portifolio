@@ -319,5 +319,5 @@ def sendemail(request):
         From: {}
         '''.format(data['message'], data['email'])
         send_mail(data['subject'], message, '', [
-                  'heitorlouzeirodev@gmail.com'])
+                  os.environ.get('EMAIL_HOST_USER')])
     return url_contact()
