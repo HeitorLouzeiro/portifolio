@@ -1,5 +1,6 @@
 import os
 
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.http.response import Http404
@@ -79,7 +80,10 @@ def createpersonaldata(request):
 
     if form.is_valid():
         form.save()
+        messages.success(request, 'Data saved successfully!')
         return url_home()
+    messages.error(request, 'Failed to save data!')
+    return url_home()
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
@@ -96,6 +100,7 @@ def editpersonaldata(request):
     personaldata.title = request.POST.get('title')
     personaldata.whatsapp = request.POST.get('whatsapp')
     personaldata.save()
+    messages.success(request, 'PersonalData Editado com sucess!')
     return url_home()
 
 
@@ -105,11 +110,18 @@ def createsocialmedia(request):
 
     if form.is_valid():
         form.save()
+        messages.success(request, 'Social Media successfully created!')
+        return url_home()
+
+    messages.error(request, 'Failed to save data!')
     return url_home()
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
 def editsocialmedia(request):
+    if not request.POST:
+        raise Http404()
+
     id = request.POST.get('minicard_id')
     socialmedia = MiniCard.objects.get(id=id)
 
@@ -119,6 +131,10 @@ def editsocialmedia(request):
         socialmedia.link = request.POST.get('link')
 
         socialmedia.save()
+        messages.success(request, 'Social Media Edited Successfully!')
+        return url_home()
+
+    messages.error(request, 'Falha ao Editar!')
     return url_home()
 
 
@@ -133,9 +149,11 @@ def deleteminicard(request, minicard_id):
         raise Http404()
     if minicard.skills is False:
         minicard.delete()
+        messages.success(request, 'Social Media successfully deleted!')
         return url_home()
     else:
         minicard.delete()
+        messages.success(request, 'Skill Deleted successfully!')
         return url_curriculum()
 
 
@@ -145,7 +163,10 @@ def createabout(request):
 
     if form.is_valid():
         form.save()
+        messages.success(request, 'Data saved successfully!')
         return url_about()
+    messages.error(request, 'Failed to Save Data!')
+    return url_about()
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
@@ -166,7 +187,10 @@ def createbarprogress(request):
 
     if form.is_valid():
         form.save()
+        messages.success(request, 'Data saved successfully!')
         return url_about()
+    messages.error(request, 'Failed to Save Data!')
+    return url_about()
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
@@ -192,7 +216,7 @@ def deletebarprogress(request, barprogress_id):
     if not barprogress:
         raise Http404()
     barprogress.delete()
-
+    messages.success(request, 'Data successfully deleted!')
     return url_about()
 
 
@@ -204,7 +228,10 @@ def createskills(request):
         skill = form.save(commit=False)
         skill.skills = True
         skill.save()
+        messages.success(request, 'Data saved successfully!')
         return url_curriculum()
+    messages.error(request, 'Failed to Save Data!')
+    return url_curriculum()
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
@@ -263,7 +290,11 @@ def createcards(request):
     if form.is_valid():
         card = form.save(commit=False)
         cardaction = True
+        messages.success(request, 'Data saved successfully!')
         return redirect_action_card(card, cardaction)
+
+    messages.error(request, 'Failed to Save Data!')
+    return redirect_action_card(card, cardaction)
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
@@ -299,6 +330,7 @@ def deletecard(request):
         raise Http404()
 
     cardaction = False
+    messages.success(request, 'Data successfully deleted!')
     return redirect_action_card(card, cardaction)
 
 
@@ -320,4 +352,8 @@ def sendemail(request):
         '''.format(data['message'], data['email'])
         send_mail(data['subject'], message, '', [
                   os.environ.get('EMAIL_HOST_USER')])
-    return url_contact()
+        messages.success(request, 'E-mail successfully sent!')
+        return url_contact()
+    else:
+        messages.error(request, 'Failed to send email!')
+        return url_contact()

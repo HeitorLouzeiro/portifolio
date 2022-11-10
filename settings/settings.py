@@ -148,10 +148,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # mensagens
 MESSAGE_TAGS = {
-    constants.ERROR: 'alert-danger',
-    constants.WARNING: 'alert-warning',
-    constants.DEBUG: 'alert-info',
-    constants.SUCCESS: 'alert-success',
-    constants.INFO: 'alert-info',
-
+    constants.ERROR: 'error',
+    constants.WARNING: 'warning',
+    constants.DEBUG: 'info',
+    constants.SUCCESS: 'success',
+    constants.INFO: 'info',
 }
