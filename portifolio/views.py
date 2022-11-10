@@ -4,43 +4,13 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.http.response import Http404
-from django.shortcuts import redirect, render
-from django.urls import reverse
+from django.shortcuts import render
 
 from .forms import (AboutForm, BarProgressForm, CardForm, MiniCardForm,
                     PersonalDataForm)
 from .models import About, BarProgress, Card, MiniCard, PersonalData
-
-
-# url dinamicas
-def url_home():
-    url = redirect(reverse('portifolio:home')+f'#home')  # noqa
-    return url
-
-
-def url_about():
-    url = redirect(reverse('portifolio:home')+f'#about')  # noqa
-    return url
-
-
-def url_curriculum():
-    url = redirect(reverse('portifolio:home')+f'#curriculo')  # noqa
-    return url
-
-
-def url_services():
-    url = redirect(reverse('portifolio:home')+f'#services')  # noqa
-    return url
-
-
-def url_portfolio():
-    url = redirect(reverse('portifolio:home')+f'#portfolio')  # noqa
-    return url
-
-
-def url_contact():
-    url = redirect(reverse('portifolio:home')+f'#contact')  # noqa
-    return url
+from .static_url import (redirect_action_card, url_about, url_contact,
+                         url_curriculum, url_home)
 
 
 # Create your views here.
@@ -248,39 +218,6 @@ def editskills(request):
             id=id, name=name, icon=icon, link=link, skills=True)
         skills.save()
         return url_curriculum()
-
-
-def redirect_action_card(card, cardaction):
-    if cardaction is True:
-        if card.section == '1':
-            card.save()
-            return url_about()
-        elif card.section == '2':
-            card.save()
-            return url_curriculum()
-        elif card.section == '3':
-            card.save()
-            return url_services()
-        elif card.section == '4':
-            card.save()
-            return url_portfolio()
-        else:
-            return redirect(reverse('portifolio:home'))
-    else:
-        if card.section == '1':
-            card.delete()
-            return url_about()
-        elif card.section == '2':
-            card.delete()
-            return url_curriculum()
-        elif card.section == '3':
-            card.delete()
-            return url_services()
-        elif card.section == '4':
-            card.delete()
-            return url_portfolio()
-        else:
-            return redirect(reverse('portifolio:home'))
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
