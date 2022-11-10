@@ -112,7 +112,7 @@ a{
     text-align: center;
 }
 
-.header .user img{
+.header .user img, .user img{
     margin:1rem 0;
     border:1rem solid transparent;
     border-radius: 50%;

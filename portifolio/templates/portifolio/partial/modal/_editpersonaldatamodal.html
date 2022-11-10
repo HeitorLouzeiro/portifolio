@@ -9,30 +9,36 @@ action={% url 'portifolio:editpersonaldata' %}
 {% block forms %}
     {% for personaldata in personaldatas %}
         <input type="hidden" name ="personaldata_id" value="{{ personaldata.id }}">
-        <div class="mb-3">
-            <label class="form-label">Name</label>
-            <input class="form-control" name="name" value="{{ personaldata.name }}">
+
+        <div class="form-floating mb-3">
+            <input class="form-control" name="name" id="name" placeholder="name" required value="{{ personaldata.name }}">
+            <label class="form-label">Name*</label>
         </div>        
         
-        <div class="mb-3">
-            <label class="form-label">Profession</label>
-            <input class="form-control" name="profession" value="{{ personaldata.profession }}">
+        <div class="form-floating mb-3">
+            <input class="form-control" name="profession" id="profession" placeholder="profession" required value="{{ personaldata.profession }}">
+            <label class="form-label">Profession*</label>
         </div>
                 
-        <div class="mb-3">
-            <label class="form-label">Title</label>
-            <input class="form-control" name="title" value="{{ personaldata.title }}">
+        <div class="form-floating mb-3">
+            <input class="form-control" name="title" id="title" placeholder="title" required value="{{ personaldata.title }}">
+            <label class="form-label">Title*</label>
         </div>
                 
-        <div class="mb-3">
+        <div class="form-floating mb-3">
+            <input class="form-control" name="whatsapp" id="whatsapp" placeholder="whatsapp" value="{{ personaldata.whatsapp }}">
             <label class="form-label">Whatsapp</label>
-            <input class="form-control" name="whatsapp" value="{{ personaldata.whatsapp }}">
         </div>
         
         <div class="mb-3">
             <label class="form-label">Cover</label>
             <input class="form-control" type="file" name="cover">
         </div>
+        {% if personaldata.cover %}
+            <div class="user">
+                <img src="{{ personaldata.cover.url }}" />
+            </div>
+        {% endif %}
     {%endfor%}
     {% endblock %}
     {% block button-action %}<button type="submit" class="btn btn-warning">Save</button>{% endblock button-action %}
