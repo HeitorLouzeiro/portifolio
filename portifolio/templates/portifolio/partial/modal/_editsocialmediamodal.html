@@ -11,13 +11,13 @@ action={% url 'portifolio:editsocialmedia' %}
 <input type="hidden" name ="minicard_id" value="{{ minicard.id }}">
 
 <div class="form-floating mb-3">
-    <input class="form-control" name="name" placeholder="name" value="{{ minicard.name }}">
-    <label class="form-label">Name</label>
+    <input class="form-control" name="name" id="name" placeholder="name" required value="{{ minicard.name }} ">
+    <label class="form-label">Name*</label>
 </div>
 
 <div class="form-floating mb-3">
-    <input type="text" class="form-control" name="icon" value="{{ minicard.icon }}" placeholder="Icon">
-    <label class="form-label" >Icon</label>
+    <input type="text" class="form-control" name="icon" id="icon" required value="{{ minicard.icon }}" placeholder="Icon">
+    <label class="form-label" >Icon*</label>
 </div>
 
 <div class="form-floating mb-3">
@@ -25,6 +25,5 @@ action={% url 'portifolio:editsocialmedia' %}
     <label class="form-label" >Link</label>
 </div>
 {% endblock %}
-{% block button-action %}<button type="submit" class="btn btn-warning">Save</button>{% endblock button-action %}
-
+{% block button-action %}<button type="submit" class="btn btn-warning" id="button">Save</button>{% endblock button-action %}
 

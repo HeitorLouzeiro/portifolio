@@ -11,17 +11,17 @@ action={% url 'portifolio:editskills' %}
 <input type="hidden" name ="minicard_id" value="{{ minicard.id }}">
 
 <div class="form-floating mb-3">
-    <input class="form-control" name="name" placeholder="name" value="{{ minicard.name }}">
+    <input class="form-control" name="name" placeholder="name" required value="{{ minicard.name }}">
     <label class="form-label">Name</label>
 </div>
 
 <div class="form-floating mb-3">
-    <input type="text" class="form-control" name="icon" value="{{ minicard.icon }}" placeholder="Icon">
+    <input type="text" class="form-control" name="icon" required required value="{{ minicard.icon }}" placeholder="Icon">
     <label class="form-label">Icon</label>
 </div>
 
 <div class="form-floating mb-3">
-    <input type="text" class="form-control" name="link" value="{{ minicard.link }}" placeholder="Link">
+    <input type="text" class="form-control" name="link"  value="{{ minicard.link }}" placeholder="Link">
     <label>Link</label>
 </div>
 {% endblock %}

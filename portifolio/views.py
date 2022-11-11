@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.http.response import Http404
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
 from .forms import (AboutForm, BarProgressForm, CardForm, MiniCardForm,
                     PersonalDataForm)
@@ -58,8 +58,10 @@ def createpersonaldata(request):
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
 def editpersonaldata(request):
+    if not request.POST:
+        raise Http404()
     id = request.POST.get('personaldata_id')
-    personaldata = PersonalData.objects.get(id=id)
+    personaldata = get_object_or_404(PersonalData, id=id)
     if request.method == 'POST':
         if len(request.FILES) != 0:
             if len(personaldata.cover) > 0:
@@ -69,8 +71,14 @@ def editpersonaldata(request):
     personaldata.profession = request.POST.get('profession')
     personaldata.title = request.POST.get('title')
     personaldata.whatsapp = request.POST.get('whatsapp')
+
+    if not personaldata.name or not personaldata.profession \
+            or not personaldata.title:
+        messages.error(request, 'Fields with (*) cannot be empty!')
+        return url_home()
+
     personaldata.save()
-    messages.success(request, 'PersonalData Editado com sucess!')
+    messages.success(request, 'Data saved successfully.')
     return url_home()
 
 
@@ -80,7 +88,7 @@ def createsocialmedia(request):
 
     if form.is_valid():
         form.save()
-        messages.success(request, 'Social Media successfully created!')
+        messages.success(request, 'Data saved successfully!')
         return url_home()
 
     messages.error(request, 'Failed to save data!')
@@ -91,20 +99,18 @@ def createsocialmedia(request):
 def editsocialmedia(request):
     if not request.POST:
         raise Http404()
-
     id = request.POST.get('minicard_id')
-    socialmedia = MiniCard.objects.get(id=id)
-
+    socialmedia = get_object_or_404(MiniCard, id=id)
     if request.method == 'POST':
         socialmedia.name = request.POST.get('name')
         socialmedia.icon = request.POST.get('icon')
         socialmedia.link = request.POST.get('link')
-
-        socialmedia.save()
-        messages.success(request, 'Social Media Edited Successfully!')
+    if not socialmedia.name or not socialmedia.icon:
+        messages.error(request, 'Fields with (*) cannot be empty!')
         return url_home()
 
-    messages.error(request, 'Falha ao Editar!')
+    socialmedia.save()
+    messages.success(request, 'Data saved successfully!')
     return url_home()
 
 
@@ -112,11 +118,8 @@ def editsocialmedia(request):
 def deleteminicard(request, minicard_id):
     if not request.POST:
         raise Http404()
+    minicard = get_object_or_404(MiniCard, id=minicard_id)
 
-    minicard = MiniCard.objects.get(id=minicard_id)
-
-    if not minicard:
-        raise Http404()
     if minicard.skills is False:
         minicard.delete()
         messages.success(request, 'Social Media successfully deleted!')
@@ -141,14 +144,23 @@ def createabout(request):
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
 def editabout(request):
+    if not request.POST:
+        raise Http404()
+
     id = request.POST.get('about_id')
-    aboutmedata = About.objects.get(id=id)
+    aboutmedata = get_object_or_404(About, id=id)
+
     if request.method == 'POST':
         aboutmedata.title = request.POST.get('title')
         aboutmedata.aboutme = request.POST.get('aboutme')
 
+    if not aboutmedata.title or aboutmedata.aboutme:
         aboutmedata.save()
+        messages.success(request, 'Data saved successfully!')
         return url_about()
+
+    messages.error(request, 'Fields with (*) cannot be empty!')
+    return url_about()
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
@@ -165,15 +177,22 @@ def createbarprogress(request):
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
 def editbarprogress(request):
+    if not request.POST:
+        raise Http404()
+
     id = request.POST.get('barprogress_id')
-    barprogress = BarProgress.objects.get(id=id)
+
+    barprogress = get_object_or_404(BarProgress, id=id)
 
     if request.method == 'POST':
         barprogress.title = request.POST.get('title')
         barprogress.progress = request.POST.get('progress')
+    if not barprogress.title or barprogress.progress:
+        messages.error(request, 'Fields with (*) cannot be empty!')
 
-        barprogress.save()
-        return url_about()
+    barprogress.save()
+    messages.success(request, 'Data saved successfully!')
+    return url_about()
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
@@ -181,10 +200,8 @@ def deletebarprogress(request, barprogress_id):
     if not request.POST:
         raise Http404()
 
-    barprogress = BarProgress.objects.get(id=barprogress_id)
+    barprogress = get_object_or_404(BarProgress, id=barprogress_id)
 
-    if not barprogress:
-        raise Http404()
     barprogress.delete()
     messages.success(request, 'Data successfully deleted!')
     return url_about()
@@ -206,18 +223,24 @@ def createskills(request):
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
 def editskills(request):
+    if not request.POST:
+        raise Http404()
+
+    id = request.POST.get('minicard_id')
+    skills = get_object_or_404(MiniCard, id=id)
+
     if request.method == 'POST':
-        id = request.POST.get('minicard_id')
-        name = request.POST.get('name')
-        icon = request.POST.get('icon')
-        link = request.POST.get('link')
+        skills.name = request.POST.get('name')
+        skills.icon = request.POST.get('icon')
+        skills.link = request.POST.get('link')
+        skills.skills = True
 
-        skills = MiniCard.objects.get(id=id)
+    if not skills.name or skills.icon:
+        messages.error(request, 'Fields with (*) cannot be empty!')
 
-        skills = MiniCard(
-            id=id, name=name, icon=icon, link=link, skills=True)
-        skills.save()
-        return url_curriculum()
+    skills.save()
+    messages.success(request, 'Data saved successfully!')
+    return url_curriculum()
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
@@ -236,8 +259,11 @@ def createcards(request):
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
 def editcard(request):
+    if not request.POST:
+        raise Http404()
+
     id = request.POST.get('card_id')
-    card = Card.objects.get(id=id)
+    card = get_object_or_404(Card, id=id)
 
     if request.method == 'POST':
         if len(request.FILES) != 0:
@@ -252,19 +278,20 @@ def editcard(request):
         card.datainfo = request.POST.get('datainfo')
         card.section = request.POST.get('section')
         cardaction = True
+        if not card.title:
+            messages.error(request, 'Fields with (*) cannot be empty!')
         return redirect_action_card(card, cardaction)
+    messages.success(request, 'Data saved successfully!')
+    return redirect_action_card(card, cardaction)
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
 def deletecard(request):
     if not request.POST:
         raise Http404()
+
     id = request.POST.get('card_id')
-
-    card = Card.objects.get(id=id)
-
-    if not card:
-        raise Http404()
+    card = get_object_or_404(Card, id=id)
 
     cardaction = False
     messages.success(request, 'Data successfully deleted!')
@@ -277,20 +304,32 @@ def sendemail(request):
         email = request.POST.get('email')
         subject = request.POST.get('subject')
         message = request.POST.get('message')
+        if not name:
+            messages.error(request, 'Fields with (*) cannot be empty!')
+            return url_contact()
+        if not email:
+            messages.error(request, 'Fields with (*) cannot be empty!')
+            return url_contact()
+        if not subject:
+            messages.error(request, 'Fields with (*) cannot be empty!')
+            return url_contact()
+        if not message:
+            messages.error(request, 'Fields with (*) cannot be empty!')
+            return url_contact()
+
         data = {
             'name': name,
             'email': email,
             'subject': subject,
             'message': message,
         }
+
         message = '''
+        Name:{}
         New message: {}
         From: {}
-        '''.format(data['message'], data['email'])
+        '''.format(data['name'], data['message'], data['email'])
         send_mail(data['subject'], message, '', [
                   os.environ.get('EMAIL_HOST_USER')])
         messages.success(request, 'E-mail successfully sent!')
-        return url_contact()
-    else:
-        messages.error(request, 'Failed to send email!')
         return url_contact()
