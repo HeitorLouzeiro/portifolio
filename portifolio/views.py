@@ -264,7 +264,6 @@ def editcard(request):
 
     id = request.POST.get('card_id')
     card = get_object_or_404(Card, id=id)
-
     if request.method == 'POST':
         if len(request.FILES) != 0:
             if len(card.cover) > 0:
@@ -277,12 +276,12 @@ def editcard(request):
         card.linkdeploy = request.POST.get('linkdeploy')
         card.datainfo = request.POST.get('datainfo')
         card.section = request.POST.get('section')
-        cardaction = True
-        if not card.title:
-            messages.error(request, 'Fields with (*) cannot be empty!')
-        return redirect_action_card(card, cardaction)
-    messages.success(request, 'Data saved successfully!')
-    return redirect_action_card(card, cardaction)
+    if not card.title:
+        messages.error(request, 'Fields with (*) cannot be empty!')
+        return redirect_action_card(card, cardaction=None)
+    else:
+        messages.success(request, 'Data saved successfully!')
+        return redirect_action_card(card, cardaction=True)
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
