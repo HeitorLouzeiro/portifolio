@@ -48,29 +48,18 @@ def redirect_action_card(card, cardaction):
             return url_portfolio()
         else:
             return redirect(reverse('portifolio:home'))
-    elif cardaction is False:
-        if card.section == '1':
-            card.delete()
-            return url_about()
-        elif card.section == '2':
-            card.delete()
-            return url_curriculum()
-        elif card.section == '3':
-            card.delete()
-            return url_services()
-        elif card.section == '4':
-            card.delete()
-            return url_portfolio()
-        else:
-            return redirect(reverse('portifolio:home'))
     else:
         if card.section == '1':
+            card.delete()
             return url_about()
         elif card.section == '2':
+            card.delete()
             return url_curriculum()
         elif card.section == '3':
+            card.delete()
             return url_services()
         elif card.section == '4':
+            card.delete()
             return url_portfolio()
         else:
             return redirect(reverse('portifolio:home'))
