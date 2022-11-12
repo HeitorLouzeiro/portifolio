@@ -13,12 +13,12 @@ action={% url 'portifolio:editabout' %}
         
         <div class="form-floating mb-3">
             <input type="text" class="form-control" name="title" placeholder="title" required value="{{ aboutdata.title }}">
-            <label class="form-label">Title</label>
+            <label class="form-label">Title*</label>
         </div>        
 
         <div class="form-floating mb-3">
             <textarea class="form-control"  placeholder="Leave a comment here" required name="aboutme" style="height: 100px">{{aboutdata.aboutme}}</textarea>
-            <label class="form-label" >Comments</label>
+            <label class="form-label" >Comments*</label>
         </div>
     {%endfor%}
 {% endblock %}

@@ -277,12 +277,14 @@ def editcard(request):
         card.linkdeploy = request.POST.get('linkdeploy')
         card.datainfo = request.POST.get('datainfo')
         card.section = request.POST.get('section')
-        cardaction = True
         if not card.title:
+            cardaction = None
             messages.error(request, 'Fields with (*) cannot be empty!')
-        return redirect_action_card(card, cardaction)
-    messages.success(request, 'Data saved successfully!')
-    return redirect_action_card(card, cardaction)
+            return redirect_action_card(card, cardaction)
+        else:
+            cardaction = True
+            messages.success(request, 'Data saved successfully!')
+            return redirect_action_card(card, cardaction)
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')
