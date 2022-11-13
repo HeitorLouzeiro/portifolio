@@ -494,9 +494,13 @@ a{
 .curriculo .share{
     position:relative;
     bottom: 2rem;
-    border-radius: .5rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: inline-flex;
+    border-radius: 0.5rem;
     box-shadow: var(--box-shadow);
-    padding-bottom:1rem;
+    padding: 1rem;
 }
 .curriculo .share a{
     height: 5rem;
@@ -533,6 +537,7 @@ a{
 }
 .box-card {
     display: grid;
+    flex: 1 1 40rem;
     align-items: baseline;
 }
 .curriculo .row .box-container .box h3{
@@ -585,6 +590,8 @@ a{
     display: flex;
     grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
     gap:2rem;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .curriculo .box-container-educacao .box-educacao{
