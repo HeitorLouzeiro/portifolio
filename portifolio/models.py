@@ -6,12 +6,10 @@ from django.db import models
 class PersonalData(models.Model):
     name = models.CharField(max_length=30)
     profession = models.CharField(max_length=30)
-    title = models.CharField(max_length=80)
+    title = models.TextField()
     whatsapp = models.CharField(max_length=100, blank=True)
     cover = models.ImageField(
         upload_to='portifolio/user/cover/', blank=True)
-    pdf = models.FileField(
-        upload_to='portifolio/user/pdf/', blank=True)
 
     def __str__(self):
         return self.name+" "+self.profession

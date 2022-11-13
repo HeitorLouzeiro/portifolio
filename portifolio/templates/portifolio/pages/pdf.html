@@ -84,18 +84,18 @@
                       {{card.title}}
                     </h4>
                     {% if card.linkdeploy %}
-                    <a href="{{card.linkdeploy}}" class="fas fa-laptop" target="_blank">
-                      Deploy
-                    </a>
-                    |
+                      <a href="{{card.linkdeploy}}" class="fas fa-laptop" target="_blank">
+                        Deploy
+                      </a>
+                      |
+                    {%endif%}
                     {% if card.linkgithub %}
-                    <a href="{{card.linkgithub}}" class="fab fa-github" target="_blank">
-                      Github
-                    </a>
-                  {% endif %}
-                {% endif %}
+                      <a href="{{card.linkgithub}}" class="fab fa-github" target="_blank">
+                        Github
+                      </a>
+                    {% endif %}
                 </div>
-                {%endif%}
+              {%endif%}
             {%endfor%}
             </div>
           </div>
