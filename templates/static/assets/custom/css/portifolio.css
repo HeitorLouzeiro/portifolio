@@ -86,7 +86,10 @@ a{
     box-shadow: var(--box-shadow-inset);
     color:var(--green);
 }
-
+.button-body .btn-body-modal{
+    font-size: 1rem;
+    padding: 0.5rem 2rem;
+}
 .heading{
     text-align: center;
     font-size: 5rem;

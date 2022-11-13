@@ -252,9 +252,10 @@ def createcards(request):
         cardaction = True
         messages.success(request, 'Data saved successfully!')
         return redirect_action_card(card, cardaction)
-
-    messages.error(request, 'Failed to Save Data!')
-    return redirect_action_card(card, cardaction)
+    else:
+        cardaction = None
+        messages.error(request, 'Failed to Save Data!')
+        return redirect_action_card(card, cardaction)
 
 
 @login_required(login_url='accounts:loginUser', redirect_field_name='next')

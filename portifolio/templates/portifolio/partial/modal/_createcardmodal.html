@@ -2,11 +2,70 @@
 {% load crispy_forms_tags %}
 {% block modal-id %}id="createcardmodal"{% endblock modal-id %}
 {% block modal-title %}Create Cads{% endblock modal-title %}
-
+{% block button-body %}
+<div class="button-body">
+    <button onclick="show_form(1)" class="btn btn-body-modal btn-outline-success">Card About</button>
+    <button onclick="show_form(2)" class="btn btn-body-modal btn-outline-primary">Card Curriculum</button>
+    <button onclick="show_form(3)" class="btn btn-body-modal btn-outline-secondary">Card Services</button>
+    <button onclick="show_form(4)" class="btn btn-body-modal btn-outline-dark">Card Portfolio</button>
+</div>
+{% endblock button-body %}
 {% block action %}
 action={% url 'portifolio:createcards' %}
 {% endblock %}
 {% block forms %}
-    {{ form_card|crispy }}
+<div style="display:none;" id="cardabout">
+{{ form_card.title|as_crispy_field }}
+{{ form_card.subtitle|as_crispy_field }}
+</div>
+    
+<div style="display:none;" id="cardcurriculum">
+    {{ form_card.datainfo|as_crispy_field }}
+</div>
+<div style="display:none;" id="cardservices">
+    {{ form_card.icon|as_crispy_field }}
+</div>
+<div style="display:none;" id="cardportfolio">
+    {{ form_card.linkgithub|as_crispy_field }}
+    {{ form_card.linkdeploy|as_crispy_field }}
+    {{ form_card.cover|as_crispy_field }}
+</div>
+<div style="display:none;" id="section">
+    {{ form_card.section|as_crispy_field }}
+</div>
+<script>
+    function show_form(form){
+        cardabout = document.getElementById('cardabout')
+        cardcurriculum = document.getElementById('cardcurriculum')
+        cardservices = document.getElementById('cardservices')
+        cardportfolio = document.getElementById('cardportfolio')
+        section = document.getElementById('id_section')
+        if(form==1){
+            cardabout.style.display='block';
+            cardcurriculum.style.display='none';
+            cardservices.style.display='none';
+            cardportfolio.style.display='none';
+            section[1].selected = true;
+        }else if(form==2){
+            cardabout.style.display='block';
+            cardcurriculum.style.display='block';
+            cardservices.style.display='none';
+            cardportfolio.style.display='none';
+            section[2].selected = true;
+        }else if(form==3){
+            cardabout.style.display='block';
+            cardservices.style.display='block';
+            cardcurriculum.style.display='none';
+            cardportfolio.style.display='none';
+            section[3].selected = true;
+        }else if(form==4){
+            cardabout.style.display='block';
+            cardportfolio.style.display='block';
+            cardcurriculum.style.display='none';
+            cardservices.style.display='none';
+            section.selected = 'disabled';
+            section[4].selected = true;
+        }
+    }
+</script>
 {% endblock %}
-
