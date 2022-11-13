@@ -1,9 +1,12 @@
 {%extends 'basepdf.html'%}
 {% block title %}
-{% for personaldata in personaldatas %}
-{{personaldata.name}} - 
-{%endfor%}
+  {% for personaldata in personaldatas %}
+    {{personaldata.name}} - 
+  {%endfor%}
 {% endblock %}
+{% block favicon %}
+    {% include 'portifolio/partial/_favicon.html' %}
+{% endblock favicon %}
 <body>
   {% block content %}
   <div class="container">

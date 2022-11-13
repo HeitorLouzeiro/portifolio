@@ -1,0 +1,5 @@
+{% for personaldata in personaldatas %}
+    {% if personaldata.cover %}
+        <link rel="shortcut icon" href="{{ personaldata.cover.url }}" type="image/x-icon" />
+    {% endif %}
+{%endfor%}
