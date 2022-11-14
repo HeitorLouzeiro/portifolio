@@ -11,22 +11,32 @@ action={% url 'portifolio:editpersonaldata' %}
         <input type="hidden" name ="personaldata_id" value="{{ personaldata.id }}">
 
         <div class="form-floating mb-3">
-            <input class="form-control" name="name" id="name" placeholder="name" required value="{{ personaldata.name }}">
+            <input class="form-control count-chars" name="name" id="name" placeholder="name" 
+            maxlength="30" data-max-chars="30" required value="{{ personaldata.name }}">
+            <div  class="form-text"></div>
             <label class="form-label">Name*</label>
+
         </div>        
         
         <div class="form-floating mb-3">
-            <input class="form-control" name="profession" id="profession" placeholder="profession" required value="{{ personaldata.profession }}">
+            <input class="form-control count-chars" name="profession" id="profession" 
+            maxlength="30"data-max-chars="30" placeholder="profession" 
+            required value="{{ personaldata.profession }}">
+            <div  class="form-text"></div>
             <label class="form-label">Profession*</label>
         </div>
                 
         <div class="form-floating mb-3">
-            <textarea class="form-control" placeholder="Leave a comment here" name="title" id="title" required style="height: 100px">{{ personaldata.title }}</textarea>
+            <textarea class="form-control" placeholder="Leave a comment here" name="title" id="title" 
+            required style="height: 100px">{{ personaldata.title }}
+            </textarea>
             <label class="form-label">Title*</label>
         </div>
                 
         <div class="form-floating mb-3">
-            <input class="form-control" name="whatsapp" id="whatsapp" placeholder="whatsapp" value="{{ personaldata.whatsapp }}">
+            <input class="form-control count-chars" name="whatsapp" id="whatsapp" maxlength="60"
+            data-max-chars="60" placeholder="whatsapp" value="{{ personaldata.whatsapp }}">
+            <div  class="form-text"></div>
             <label class="form-label">Whatsapp</label>
         </div>
         
@@ -40,6 +50,8 @@ action={% url 'portifolio:editpersonaldata' %}
             </div>
         {% endif %}
     {%endfor%}
-    {% endblock %}
-    {% block button-action %}<button type="submit" class="btn btn-warning">Save</button>{% endblock button-action %}
+{% endblock forms%}
+{% block button-action %}
+    <button type="submit" class="btn btn-warning">Save</button>
+{% endblock button-action %}
 

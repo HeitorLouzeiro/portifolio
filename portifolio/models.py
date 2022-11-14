@@ -7,7 +7,7 @@ class PersonalData(models.Model):
     name = models.CharField(max_length=30)
     profession = models.CharField(max_length=30)
     title = models.TextField()
-    whatsapp = models.CharField(max_length=100, blank=True)
+    whatsapp = models.CharField(max_length=60, blank=True)
     cover = models.ImageField(
         upload_to='portifolio/user/cover/', blank=True)
 
@@ -26,7 +26,7 @@ class MiniCard(models.Model):
 
 
 class BarProgress(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=20)
     progress = models.CharField(max_length=3)
 
     def __str__(self):
@@ -50,7 +50,7 @@ class Card(models.Model):
     )
     title = models.CharField(max_length=30)
     subtitle = models.CharField(max_length=100, null=True, blank=True)
-    icon = models.CharField(max_length=100, null=True, blank=True)
+    icon = models.CharField(max_length=20, null=True, blank=True)
     linkgithub = models.CharField(max_length=100, null=True, blank=True)
     linkdeploy = models.CharField(max_length=100, null=True, blank=True)
     datainfo = models.CharField(max_length=30, null=True, blank=True)

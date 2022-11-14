@@ -13,40 +13,50 @@
 
   {% if card.section > '0' %}
     <div class="form-floating mb-3">
-      <input class="form-control" name="title" placeholder="name" required value="{{ card.title }}" />
+      <input class="form-control count-chars" name="title" placeholder="name" 
+      maxlength="30" data-max-chars="30" required value="{{ card.title }}" />
+      <div  class="form-text"></div>
       <label class="form-label">Title*</label>
     </div>
   {% endif %}
 
   {% if card.section != '4' %}
     <div class="form-floating mb-3">
-      <input class="form-control" name="subtitle" placeholder="subtitle" required value="{{ card.subtitle }}" />
+      <input class="form-control count-chars" name="subtitle" placeholder="subtitle" 
+      maxlength="100" data-max-chars="100" required value="{{ card.subtitle }}" />
+      <div  class="form-text"></div>
       <label class="form-label">Subtitle*</label>
     </div>
   {% endif %}
 
   {% if card.section == '3' %}
     <div class="form-floating mb-3">
-      <input class="form-control" name="icon" placeholder="icon" required value="{{ card.icon }}" />
+      <input class="form-control count-chars" name="icon" placeholder="icon" 
+      maxlength="20" data-max-chars="20" required value="{{ card.icon }}" />
+      <div  class="form-text"></div>
       <label class="form-label">Icon*</label>
     </div>
   {% endif %}
 
   {% if card.section == '4' %}
       <div class="form-floating mb-3">
-        <input class="form-control" name="linkgithub" placeholder="github" value="{{ card.linkgithub }}" />
+        <input class="form-control" name="linkgithub" 
+        placeholder="github" value="{{ card.linkgithub }}" />
         <label class="form-label">Github*</label>
       </div>
 
       <div class="form-floating mb-3">
-        <input class="form-control" name="linkdeploy" placeholder="linkdeploy" value="{{ card.linkdeploy }}" />
+        <input class="form-control" name="linkdeploy" 
+        placeholder="linkdeploy" value="{{ card.linkdeploy }}" />
         <label class="form-label">Deploy</label>
       </div>
   {% endif %}
   
   {% if card.section == '2' %}
     <div class="form-floating mb-3">
-      <input class="form-control" name="datainfo" placeholder="info" value="{{ card.datainfo }}" />
+      <input class="form-control count-chars" name="datainfo" 
+      maxlength="30" data-max-chars="30" placeholder="info" value="{{ card.datainfo }}" />
+      <div  class="form-text"></div>
       <label class="form-label">Data info*</label>
     </div>
   {% endif %}

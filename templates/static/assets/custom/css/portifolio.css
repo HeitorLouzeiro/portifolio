@@ -51,7 +51,20 @@ section{
 a{
     text-decoration: none;
 }
-
+.form-floating>.form-control {
+    font-size: 1.5rem;
+    height: auto;
+    line-height: normal;
+}
+.form-text {
+    font-size: 1.7rem;
+}
+.form-floating>label{
+    font-size: 1.5rem;
+}
+.form-floating>.form-control:not(:placeholder-shown) {
+    padding-top: 2.625rem;
+}
 .btn{
     margin-top: 1rem;
     display: inline-block;

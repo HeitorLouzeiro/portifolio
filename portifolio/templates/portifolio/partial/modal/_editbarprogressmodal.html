@@ -11,15 +11,21 @@ action={% url 'portifolio:editbarprogress' %}
 <input type="hidden" name="barprogress_id" value="{{ barprogress.id }}">
 
 <div class="form-floating mb-3">
-    <input class="form-control" placeholder="title" name="title" required value="{{ barprogress.title }}">
+    <input class="form-control count-chars " placeholder="title" name="title" 
+    maxlength="20" data-max-chars="20" required value="{{ barprogress.title }}">
     <label class="form-label">Title*</label>
 </div>
 
 <div class="form-floating mb-3">
-    <input type="text" class="form-control" name="progress" required value="{{ barprogress.progress }}" placeholder="Icon">
+    <input type="text" class="form-control count-chars" name="progress"  
+    maxlength="3" data-max-chars="3" required value="{{ barprogress.progress }}" 
+    placeholder="Icon">
+    <div  class="form-text"></div>
     <label class="form-label" >Progress*</label>
 </div>
 {% endblock %}
-{% block button-action %}<button type="submit" class="btn btn-warning">Save</button>{% endblock button-action %}
+{% block button-action %}
+    <button type="submit" class="btn btn-warning">Save</button>
+{% endblock button-action %}
 
 
