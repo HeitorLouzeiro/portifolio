@@ -30,6 +30,7 @@
   {% endif %}
 
   {% if card.section == '3' %}
+  {% include 'portifolio/partial/helps/_card.html' %}
     <div class="form-floating mb-3">
       <input class="form-control count-chars" name="icon" placeholder="icon" 
       maxlength="20" data-max-chars="20" required value="{{ card.icon }}" />

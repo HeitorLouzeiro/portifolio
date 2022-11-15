@@ -50,7 +50,12 @@ section{
 }
 a{
     text-decoration: none;
+    color:var(--black);
 }
+a:hover{
+    color:var(--green);
+}
+
 .form-floating>.form-control {
     font-size: 1.5rem;
     height: auto;
@@ -64,6 +69,28 @@ a{
 }
 .form-floating>.form-control:not(:placeholder-shown) {
     padding-top: 2.625rem;
+    text-transform: none;
+}
+.icon-info {
+    display: flex;
+    font-size: 2rem;
+    justify-content: flex-end;
+}
+.popover-header, .popover-body {
+    font-size: 1.5rem;
+    text-transform: none;
+}
+.form-control{
+    text-transform: none;
+}
+.mb-3 {
+    font-size: 1.5rem;
+}
+.home .share a.link-icon, .curriculo .share a.link-icon{
+    box-shadow: none;
+    height: auto;
+    width: auto;
+    line-height: normal;
 }
 .btn{
     margin-top: 1rem;

@@ -13,7 +13,12 @@
         <form {% block action %} action={% url 'portifolio:createpersonaldata' %} {% endblock action %}  method="POST" {% block file %}enctype="multipart/form-data"{% endblock file %}>
           {% csrf_token %}
           {% block forms %}
-            {{ form_personaldata|crispy }}
+            {{ form_personaldata.name|as_crispy_field }}
+            {{ form_personaldata.profession|as_crispy_field }}
+            {{ form_personaldata.title|as_crispy_field }}
+            {% include 'portifolio/partial/helps/_whatssap.html' %}   
+            {{ form_personaldata.whatsapp|as_crispy_field }}
+            {{ form_personaldata.cover|as_crispy_field }}
           {% endblock forms %}
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

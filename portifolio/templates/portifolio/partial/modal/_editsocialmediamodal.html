@@ -16,7 +16,7 @@ action={% url 'portifolio:editsocialmedia' %}
     <div  class="form-text"></div>
     <label class="form-label">Name*</label>
 </div>
-
+{% include 'portifolio/partial/helps/_socialmedia.html' %}
 <div class="form-floating mb-3">
     <input type="text" class="form-control count-chars" name="icon" id="icon" 
     maxlength="20" data-max-chars="20" required value="{{ minicard.icon }}" placeholder="Icon">

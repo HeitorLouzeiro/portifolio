@@ -23,6 +23,7 @@ action={% url 'portifolio:createcards' %}
     {{ form_card.datainfo|as_crispy_field }}
 </div>
 <div style="display:none;" id="cardservices">
+    {% include 'portifolio/partial/helps/_card.html' %}
     {{ form_card.icon|as_crispy_field }}
 </div>
 <div style="display:none;" id="cardportfolio">

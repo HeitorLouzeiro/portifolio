@@ -8,6 +8,9 @@ action={% url 'portifolio:createbarprogress' %}
 {% block file %}{% endblock file %}
 {% endblock %}
 {% block forms %}
-    {{ form_barprogress|crispy }}
+    {{ form_barprogress.title|as_crispy_field }}
+    {% include 'portifolio/partial/helps/_progress.html' %}
+    {{ form_barprogress.progress|as_crispy_field }}
+
 {% endblock %}
 

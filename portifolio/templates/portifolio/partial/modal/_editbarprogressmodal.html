@@ -15,7 +15,7 @@ action={% url 'portifolio:editbarprogress' %}
     maxlength="20" data-max-chars="20" required value="{{ barprogress.title }}">
     <label class="form-label">Title*</label>
 </div>
-
+{% include 'portifolio/partial/helps/_progress.html' %}
 <div class="form-floating mb-3">
     <input type="text" class="form-control count-chars" name="progress"  
     maxlength="3" data-max-chars="3" required value="{{ barprogress.progress }}" 

@@ -32,7 +32,7 @@ action={% url 'portifolio:editpersonaldata' %}
             </textarea>
             <label class="form-label">Title*</label>
         </div>
-                
+        {% include 'portifolio/partial/helps/_whatssap.html' %}      
         <div class="form-floating mb-3">
             <input class="form-control count-chars" name="whatsapp" id="whatsapp" maxlength="60"
             data-max-chars="60" placeholder="whatsapp" value="{{ personaldata.whatsapp }}">

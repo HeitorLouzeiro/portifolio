@@ -8,6 +8,9 @@ action={% url 'portifolio:createsocialmedia' %}
 {% block file %}{% endblock file %}
 {% endblock %}
 {% block forms %}
-    {{ form_minicard|crispy }}
+    {{ form_minicard.name|as_crispy_field }}
+    {% include 'portifolio/partial/helps/_socialmedia.html' %}
+    {{ form_minicard.icon|as_crispy_field }}
+    {{ form_minicard.link|as_crispy_field }}
 {% endblock %}
 

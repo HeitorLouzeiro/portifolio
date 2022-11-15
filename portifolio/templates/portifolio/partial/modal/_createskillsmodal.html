@@ -8,6 +8,10 @@ action={% url 'portifolio:createskills' %}
 {% block file %}{% endblock file %}
 {% endblock %}
 {% block forms %}
-    {{ form_minicard|crispy }}
+    {{ form_minicard.name|as_crispy_field }}
+    {% include 'portifolio/partial/helps/_skill.html' %}
+    {{ form_minicard.icon|as_crispy_field }}
+    {{ form_minicard.link|as_crispy_field }}
+
 {% endblock %}
 
