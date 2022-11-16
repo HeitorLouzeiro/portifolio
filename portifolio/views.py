@@ -1,13 +1,15 @@
 import os
 
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.http.response import Http404
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
 
-from .forms import (AboutForm, BarProgressForm, CardForm, MiniCardForm,
-                    PersonalDataForm)
+from .forms import (AboutForm, BarProgressForm, CardForm, LoginForm,
+                    MiniCardForm, PersonalDataForm)
 from .models import About, BarProgress, Card, MiniCard, PersonalData
 from .static_url import (redirect_action_card, url_about, url_contact,
                          url_curriculum, url_home)
@@ -44,7 +46,48 @@ def home(request):
     return render(request, template_name, context)
 
 
-@login_required(login_url='accounts:loginUser', redirect_field_name='next')
+def loginuser(request):
+    if request.method == 'GET':
+        template_name = 'portifolio/pages/login.html'
+        form = LoginForm()
+        return render(request, template_name, {'form': form})
+
+    if request.method == 'POST':
+        form = LoginForm(request.POST or None)
+
+        authenticated_user = authenticate(
+            username=request.POST.get('username'),
+            password=request.POST.get('password'),
+        )
+
+        if authenticated_user is not None:
+            login(request, authenticated_user)
+        else:
+            messages.error(request, 'Invalid credentials')
+            return redirect(reverse('portifolio:loginuser'))
+    else:
+        messages.error(request, 'Invalid username or password')
+        return redirect(reverse('portifolio:loginuser'))
+
+    return redirect(reverse('portifolio:home'))
+
+
+@login_required(login_url='portifolio:loginuser', redirect_field_name='next')
+def logoutuser(request):
+    if not request.POST:
+        messages.error(request, 'Invalid logout request')
+        return redirect(reverse('portifolio:home'))
+
+    if request.POST.get('username') != request.user.username:
+        messages.error(request, 'Invalid logout user')
+        return redirect(reverse('portifolio:home'))
+
+    logout(request)
+    messages.success(request, 'Successfully logged out!')
+    return redirect(reverse('portifolio:home'))
+
+
+@login_required(login_url='portifolio:loginuser', redirect_field_name='next')
 def createpersonaldata(request):
     form = PersonalDataForm(request.POST, request.FILES or None)
 
@@ -56,7 +99,7 @@ def createpersonaldata(request):
     return url_home()
 
 
-@login_required(login_url='accounts:loginUser', redirect_field_name='next')
+@login_required(login_url='portifolio:loginuser', redirect_field_name='next')
 def editpersonaldata(request):
     if not request.POST:
         raise Http404()
@@ -82,7 +125,7 @@ def editpersonaldata(request):
     return url_home()
 
 
-@login_required(login_url='accounts:loginUser', redirect_field_name='next')
+@login_required(login_url='portifolio:loginuser', redirect_field_name='next')
 def createsocialmedia(request):
     form = MiniCardForm(request.POST or None)
 
@@ -95,7 +138,7 @@ def createsocialmedia(request):
     return url_home()
 
 
-@login_required(login_url='accounts:loginUser', redirect_field_name='next')
+@login_required(login_url='portifolio:loginuser', redirect_field_name='next')
 def editsocialmedia(request):
     if not request.POST:
         raise Http404()
@@ -114,7 +157,7 @@ def editsocialmedia(request):
     return url_home()
 
 
-@login_required(login_url='accounts:loginUser', redirect_field_name='next')
+@login_required(login_url='portifolio:loginuser', redirect_field_name='next')
 def deleteminicard(request, minicard_id):
     if not request.POST:
         raise Http404()
@@ -130,7 +173,7 @@ def deleteminicard(request, minicard_id):
         return url_curriculum()
 
 
-@login_required(login_url='accounts:loginUser', redirect_field_name='next')
+@login_required(login_url='portifolio:loginuser', redirect_field_name='next')
 def createabout(request):
     form = AboutForm(request.POST or None)
 
@@ -142,7 +185,7 @@ def createabout(request):
     return url_about()
 
 
-@login_required(login_url='accounts:loginUser', redirect_field_name='next')
+@login_required(login_url='portifolio:loginuser', redirect_field_name='next')
 def editabout(request):
     if not request.POST:
         raise Http404()
@@ -163,7 +206,7 @@ def editabout(request):
     return url_about()
 
 
-@login_required(login_url='accounts:loginUser', redirect_field_name='next')
+@login_required(login_url='portifolio:loginuser', redirect_field_name='next')
 def createbarprogress(request):
     form = BarProgressForm(request.POST or None)
 
@@ -175,7 +218,7 @@ def createbarprogress(request):
     return url_about()
 
 
-@login_required(login_url='accounts:loginUser', redirect_field_name='next')
+@login_required(login_url='portifolio:loginuser', redirect_field_name='next')
 def editbarprogress(request):
     if not request.POST:
         raise Http404()
@@ -195,7 +238,7 @@ def editbarprogress(request):
     return url_about()
 
 
-@login_required(login_url='accounts:loginUser', redirect_field_name='next')
+@login_required(login_url='portifolio:loginuser', redirect_field_name='next')
 def deletebarprogress(request, barprogress_id):
     if not request.POST:
         raise Http404()
@@ -207,7 +250,7 @@ def deletebarprogress(request, barprogress_id):
     return url_about()
 
 
-@login_required(login_url='accounts:loginUser', redirect_field_name='next')
+@login_required(login_url='portifolio:loginuser', redirect_field_name='next')
 def createskills(request):
     form = MiniCardForm(request.POST or None)
 
@@ -221,7 +264,7 @@ def createskills(request):
     return url_curriculum()
 
 
-@login_required(login_url='accounts:loginUser', redirect_field_name='next')
+@login_required(login_url='portifolio:loginuser', redirect_field_name='next')
 def editskills(request):
     if not request.POST:
         raise Http404()
@@ -243,7 +286,7 @@ def editskills(request):
     return url_curriculum()
 
 
-@login_required(login_url='accounts:loginUser', redirect_field_name='next')
+@login_required(login_url='portifolio:loginuser', redirect_field_name='next')
 def createcards(request):
     form = CardForm(request.POST, request.FILES or None)
 
@@ -258,7 +301,7 @@ def createcards(request):
         return redirect_action_card(card, cardaction)
 
 
-@login_required(login_url='accounts:loginUser', redirect_field_name='next')
+@login_required(login_url='portifolio:loginuser', redirect_field_name='next')
 def editcard(request):
     if not request.POST:
         raise Http404()
@@ -288,7 +331,7 @@ def editcard(request):
             return redirect_action_card(card, cardaction)
 
 
-@login_required(login_url='accounts:loginUser', redirect_field_name='next')
+@login_required(login_url='portifolio:loginuser', redirect_field_name='next')
 def deletecard(request):
     if not request.POST:
         raise Http404()

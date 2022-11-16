@@ -19,6 +19,9 @@
     <a href="#portfolio">portfolio</a>
     <a href="#contact">contact</a>
   </nav>
+  {% if request.user.is_authenticated %}
+    {% include 'portifolio/pages/logout.html' %}
+  {% endif %}
 </header>
 
 <!-- header section ends -->

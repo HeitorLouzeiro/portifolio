@@ -24,6 +24,9 @@ app_name = 'portifolio'
 urlpatterns = [
     path('', views.home, name='home'),
 
+    path('login/', views.loginuser, name='loginuser'),
+    path('logout/', views.logoutuser, name='logoutuser'),
+
     path('create/personaldata/', views.createpersonaldata,
          name='createpersonaldata'),
     path('edit/personaldata/',

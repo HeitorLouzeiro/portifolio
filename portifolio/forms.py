@@ -3,6 +3,14 @@ from django import forms
 from .models import About, BarProgress, Card, MiniCard, PersonalData
 
 
+class LoginForm(forms.Form):
+
+    username = forms.CharField()
+    password = forms.CharField(
+        widget=forms.PasswordInput()
+    )
+
+
 class PersonalDataForm(forms.ModelForm):
     class Meta:
         model = PersonalData

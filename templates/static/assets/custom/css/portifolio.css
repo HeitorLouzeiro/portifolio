@@ -126,6 +126,24 @@ a:hover{
     box-shadow: var(--box-shadow-inset);
     color:var(--green);
 }
+.form-logout{
+    display: grid
+}
+.btn-logout{
+    margin: 1.5rem 0;
+    align-items: normal;
+    padding: 0.7rem;
+    border-radius: 5rem;
+    font-size: 2rem;
+    box-shadow: var(--box-shadow);
+    color: var(--black);
+    background-color: var(--box-shadow);
+}
+.btn-logout:hover{
+    box-shadow: var(--box-shadow-inset);
+    color:var(--green);
+}
+
 .button-body .btn-body-modal{
     font-size: 1rem;
     padding: 0.5rem 2rem;

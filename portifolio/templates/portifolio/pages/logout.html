@@ -1,0 +1,8 @@
+<form class = "form-logout" action="{% url 'portifolio:logoutuser' %}" method='POST'>
+    {% csrf_token %}
+
+    <button class="btn-logout" type="submit">
+        <i class="bi bi-box-arrow-left"> Logout</i>
+    </button>
+    <input type="hidden" name="username" value="{{ request.user.username }}">
+</form>
