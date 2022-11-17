@@ -1,5 +1,6 @@
 let menu = document.querySelector('#menu-btn');
 let header = document.querySelector('.header');
+var icone = document.getElementsByClassName('btn-icone'); 
 
 menu.onclick = () =>{
     menu.classList.toggle('fa-times');
@@ -12,14 +13,30 @@ window.onscroll = () =>{
 }
 
 let themeToggler = document.querySelector('#theme-toggler');
+let getMode = localStorage.getItem('mode');
+if(getMode && getMode ==='dark'){
+  document.body.classList.add('active');
+  for(let index=0; index<icone.length; index++){
+    icone[index].classList.add('active');   
+  }    
+
+}
 
 themeToggler.onclick = () =>{
     themeToggler.classList.toggle('fa-sun');
     if(themeToggler.classList.contains('fa-sun')){
-        document.body.classList.add('active');
-    }else{
-        document.body.classList.remove('active');
-    }
+      document.body.classList.add('active');
+      for(let index=0; index<icone.length; index++){  
+        icone[index].classList.add('active');   
+      }          
+      return localStorage.setItem('mode','dark')
+  }else{
+      document.body.classList.remove('active');
+      for(let index=0; index<icone.length; index++){
+        icone[index].classList.remove('active'); 
+      }             
+      return localStorage.setItem('mode','ligth')
+  }
 }
 
 /* When the user clicks on the button,

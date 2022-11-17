@@ -1,9 +1,12 @@
 let menu = document.querySelector('#menu-btn');
 let header = document.querySelector('.header');
+let btniconedit = document.querySelector('.btn-icon-edit');
+let btnicondelete = document.querySelector('.btn-icon-delete');
 
 menu.onclick = () =>{
     menu.classList.toggle('fa-times');
     header.classList.toggle('active');
+    
 }
 
 window.onscroll = () =>{
@@ -12,13 +15,27 @@ window.onscroll = () =>{
 }
 
 let themeToggler = document.querySelector('#theme-toggler');
+let getMode = localStorage.getItem('mode');
+if(getMode && getMode ==='dark'){
+  document.body.classList.add('active');
+  btniconedit.classList.toggle('active');        
+  btnicondelete.classList.toggle('active');
+}
 
 themeToggler.onclick = () =>{
     themeToggler.classList.toggle('fa-sun');
     if(themeToggler.classList.contains('fa-sun')){
         document.body.classList.add('active');
+        btniconedit.classList.toggle('active');        
+        btnicondelete.classList.toggle('active');        
+              
+        return localStorage.setItem('mode','dark')
     }else{
         document.body.classList.remove('active');
+        btniconedit.classList.remove('active');
+        btnicondelete.classList.remove('active');
+        
+        return localStorage.setItem('mode','ligth')
     }
 }
 

@@ -15,8 +15,14 @@
             <a href="{{ minicard.link }}" class="{{ minicard.icon }}" target="_blank"></a>
             {% if request.user.is_authenticated %}
               <div class="button-card">
-                <button type="button" data-bs-toggle="modal" data-bs-target="#editsocialmedia{{minicard.id}}"><i class="fas fa-edit"></i></button>
-                <button type="button" data-bs-toggle="modal" data-bs-target="#deleteminicard{{minicard.id}}"><i class="fas fa-trash-alt"></i></button>
+                <button  class="btn-icone" type="button" data-bs-toggle="modal" 
+                data-bs-target="#editsocialmedia{{minicard.id}}">
+                <i class="fas fa-edit"></i>
+              </button>
+                <button class="btn-icone" type="button" data-bs-toggle="modal" 
+                data-bs-target="#deleteminicard{{minicard.id}}">
+                  <i class="fas fa-trash-alt"></i>
+              </button>
               </div>
             {% endif %}
           </div>

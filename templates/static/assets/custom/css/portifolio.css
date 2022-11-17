@@ -56,6 +56,18 @@ a:hover{
     color:var(--green);
 }
 
+i {
+    color: var(--black);
+}
+i.fa-link,
+span.fa-link,
+i.link-icon
+ {
+    color: #000000;
+}
+button.btn-icone.active{
+    background-color: #000000;
+}
 .form-floating>.form-control {
     font-size: 1.5rem;
     height: auto;
@@ -126,6 +138,9 @@ a:hover{
     box-shadow: var(--box-shadow-inset);
     color:var(--green);
 }
+
+
+
 .form-logout{
     display: grid
 }
@@ -148,6 +163,7 @@ a:hover{
     font-size: 1rem;
     padding: 0.5rem 2rem;
 }
+
 .heading{
     text-align: center;
     font-size: 5rem;
@@ -374,7 +390,6 @@ a:hover{
 }
 .button-card{
     font-size: 1.7rem;
-    box-shadow: var(--box-shadow);
     margin: 0.5rem;
     border-radius: 0.5rem;
 }
@@ -386,7 +401,6 @@ a:hover{
 .modal-img img{
     height: 100%;
     width: 100%;
-
 }
 
 .home{
