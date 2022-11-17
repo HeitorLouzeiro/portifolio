@@ -112,11 +112,25 @@ button.btn-icone.active{
     font-size: 1.7rem;
     cursor: pointer;
     background: none;
+    color: #000;
+}
+input.btn.contact {
+    margin-top: 1rem;
+    display: inline-block;
+    padding: 1rem 3.5rem;
+    border-radius: 0.5rem;
+    font-size: 1.7rem;
+    cursor: pointer;
+    background: none;
     box-shadow: var(--box-shadow);
     color: var(--light-color);
 }
 
 .btn:hover{
+    color:#fff;
+}
+
+input.btn.contact:hover{
     box-shadow: var(--box-shadow-inset);
     color:var(--green);
 }
@@ -569,7 +583,6 @@ button.btn-icone.active{
     align-items: center;
     justify-content: center;
     text-align: center;
-    display: inline-flex;
     border-radius: 0.5rem;
     box-shadow: var(--box-shadow);
     padding: 1rem;
@@ -701,7 +714,7 @@ button.btn-icone.active{
     line-height: 1;
     color: var(--light-color);
     padding: 0.5rem 0;
-    text-align: justify;
+    text-align: center;
 }
 
 .curriculo .box-container-educacao .box-educacao::before{
@@ -975,6 +988,9 @@ button.btn-icone.active{
     .header{
         width:100%;
         border-right: 0;
+    }
+    .about .row .progress {
+        flex: 50%;
     }
 
 }
