@@ -112,8 +112,8 @@ button.btn-icone.active{
     font-size: 1.7rem;
     cursor: pointer;
     background: none;
-    color: #000
     box-shadow: var(--box-shadow);
+    color: var(--light-color);
 }
 
 .btn:hover{
