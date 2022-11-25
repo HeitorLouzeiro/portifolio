@@ -41,24 +41,39 @@ action={% url 'portifolio:createcards' %}
         cardservices = document.getElementById('cardservices')
         cardportfolio = document.getElementById('cardportfolio')
         section = document.getElementById('id_section')
+        subtitle = document.getElementById('id_subtitle')
+        icon = document.getElementById('id_icon')
+        linkgithub = document.getElementById('id_linkgithub')
+        linkdeploy = document.getElementById('id_linkdeploy')
+        datainfo = document.getElementById('id_datainfo')
+        cover = document.getElementById('id_cover')
         if(form==1){
             cardabout.style.display='block';
             cardcurriculum.style.display='none';
             cardservices.style.display='none';
             cardportfolio.style.display='none';
             section[1].selected = true;
+            subtitle.setAttribute('required','')
         }else if(form==2){
             cardabout.style.display='block';
             cardcurriculum.style.display='block';
             cardservices.style.display='none';
             cardportfolio.style.display='none';
             section[2].selected = true;
+            icon.removeAttribute('required')
+            linkgithub.removeAttribute('required')
+            datainfo.setAttribute('required','')
+            cover.removeAttribute('required')
         }else if(form==3){
             cardabout.style.display='block';
             cardservices.style.display='block';
             cardcurriculum.style.display='none';
             cardportfolio.style.display='none';
             section[3].selected = true;
+            icon.setAttribute('required','')
+            linkgithub.removeAttribute('required')
+            datainfo.removeAttribute('required')
+            cover.removeAttribute('required')
         }else if(form==4){
             cardabout.style.display='block';
             cardportfolio.style.display='block';
@@ -66,6 +81,10 @@ action={% url 'portifolio:createcards' %}
             cardservices.style.display='none';
             section.selected = 'disabled';
             section[4].selected = true;
+            icon.removeAttribute('required')
+            linkgithub.setAttribute('required','')
+            datainfo.removeAttribute('required')
+            cover.setAttribute('required','')
         }
     }
 </script>
