@@ -1,5 +1,6 @@
 import os
 
+import cloudinary
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -108,7 +109,7 @@ def editpersonaldata(request):
     if request.method == 'POST':
         if len(request.FILES) != 0:
             if len(personaldata.cover) > 0:
-                os.remove(personaldata.cover.path)
+                cloudinary.uploader.destroy(personaldata.cover.public_id)
             personaldata.cover = request.FILES['cover']
     personaldata.name = request.POST.get('name')
     personaldata.profession = request.POST.get('profession')
@@ -312,7 +313,7 @@ def editcard(request):
     if request.method == 'POST':
         if len(request.FILES) != 0:
             if len(card.cover) > 0:
-                os.remove(card.cover.path)
+                cloudinary.uploader.destroy(card.cover.public_id)
             card.cover = request.FILES['cover']
         card.title = request.POST.get('title')
         card.subtitle = request.POST.get('subtitle')
@@ -338,6 +339,10 @@ def deletecard(request):
 
     id = request.POST.get('card_id')
     card = get_object_or_404(Card, id=id)
+    if len(card.cover) > 0:
+        cloudinary.uploader.destroy(card.cover.public_id)
+    else:
+        pass
 
     cardaction = False
     messages.success(request, 'Data successfully deleted!')

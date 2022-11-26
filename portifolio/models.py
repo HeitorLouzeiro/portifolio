@@ -1,3 +1,4 @@
+from cloudinary.models import CloudinaryField
 from django.db import models
 
 # Create your models here.
@@ -8,8 +9,7 @@ class PersonalData(models.Model):
     profession = models.CharField(max_length=30)
     title = models.TextField()
     whatsapp = models.CharField(max_length=60, blank=True)
-    cover = models.ImageField(
-        upload_to='portifolio/user/cover/', blank=True)
+    cover = CloudinaryField('cover', blank=True)
 
     def __str__(self):
         return self.name+" "+self.profession
@@ -55,12 +55,7 @@ class Card(models.Model):
     linkdeploy = models.CharField(max_length=100, null=True, blank=True)
     datainfo = models.CharField(max_length=30, null=True, blank=True)
     section = models.CharField(max_length=1, choices=SECTION)
-    cover = models.ImageField(
-        upload_to='portifolio/projects/cover/', blank=True)
+    cover = CloudinaryField('cover', blank=True)
 
     def __str__(self):
         return self.title+" "+self.section
-
-    def delete(self, *args, **kwargs):
-        self.cover.delete()
-        super().delete(*args, **kwargs)
