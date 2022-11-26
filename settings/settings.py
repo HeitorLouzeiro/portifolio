@@ -14,6 +14,7 @@ import os
 from pathlib import Path
 
 import cloudinary
+import django_on_heroku
 from django.contrib.messages import constants
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -163,3 +164,6 @@ cloudinary.config(
     api_key=os.environ.get('API_KEY'),
     api_secret=os.environ.get('API_SECRET')
 )
+
+# Configure Django App for Heroku.
+django_on_heroku.settings(locals())
