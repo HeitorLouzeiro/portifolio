@@ -42,7 +42,7 @@
   {% if card.section == '4' %}
       <div class="form-floating mb-3">
         <input class="form-control" name="linkgithub" 
-        placeholder="github" value="{{ card.linkgithub }}" />
+        placeholder="github" required value="{{ card.linkgithub }}" />
         <label class="form-label">Github*</label>
       </div>
 
@@ -56,7 +56,7 @@
   {% if card.section == '2' %}
     <div class="form-floating mb-3">
       <input class="form-control count-chars" name="datainfo" 
-      maxlength="30" data-max-chars="30" placeholder="info" value="{{ card.datainfo }}" />
+      maxlength="30" data-max-chars="30" required placeholder="info" value="{{ card.datainfo }}" />
       <div  class="form-text"></div>
       <label class="form-label">Data info*</label>
     </div>
@@ -66,14 +66,13 @@
     {% if card.cover %}
       <div class="mb-3">
         <label class="form-label">Cover*</label>
-        <input class="form-control" type="file" name="cover"/>
+        <input class="form-control" type="file" required name="cover"/>
       </div>
       <div class="modal-img">
           <img src="{{ card.cover.url }}" />
       </div>
     {% endif %}
   {% endif %}
-
 {% endblock %}
 
 {% block button-action %}<button type="submit" class="btn btn-warning">Save</button>{% endblock button-action %}
