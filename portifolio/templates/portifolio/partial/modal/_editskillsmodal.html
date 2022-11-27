@@ -13,12 +13,13 @@ action={% url 'portifolio:editskills' %}
 <div class="form-floating mb-3">
     <input class="form-control count-chars" name="name" placeholder="name" 
     required value="{{ minicard.name }}" maxlength="30" data-max-chars="30" >
+    <div  class="form-text"></div>
     <label class="form-label">Name*</label>
 </div>
 {% include 'portifolio/partial/helps/_skill.html' %}
 
 <div class="form-floating mb-3">
-    <input type="text" class="form-control count-chars" name="icon"  
+    <input type="text" class="form-control" name="icon"  
     required value="{{ minicard.icon }}" placeholder="Icon">
     <label class="form-label">Icon*</label>
 </div>

@@ -54,6 +54,10 @@ action={% url 'portifolio:createcards' %}
             cardportfolio.style.display='none';
             section[1].selected = true;
             subtitle.setAttribute('required','')
+            icon.removeAttribute('required')
+            linkgithub.removeAttribute('required')
+            datainfo.removeAttribute('required','')
+            cover.removeAttribute('required')
         }else if(form==2){
             cardabout.style.display='block';
             cardcurriculum.style.display='block';
