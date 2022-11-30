@@ -318,7 +318,7 @@ We thank the following people who contributed to this project:
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See [LICENSE](license) for more information.
+Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -346,16 +346,16 @@ Project Link: [https://github.com/HeitorLouzeiro/portifolio](https://github.com/
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/HeitorLouzeiro/contact-django.svg?style=for-the-badge
-[contributors-url]: https://github.com/HeitorLouzeiro/contact-django/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/HeitorLouzeiro/contact-django.svg?style=for-the-badge
-[forks-url]: https://github.com/HeitorLouzeiro/contact-django/network/members
-[stars-shield]: https://img.shields.io/github/stars/HeitorLouzeiro/contact-django.svg?style=for-the-badge
-[stars-url]: https://github.com/HeitorLouzeiro/contact-django/stargazers
-[issues-shield]: https://img.shields.io/github/issues/HeitorLouzeiro/contact-django.svg?style=for-the-badge
-[issues-url]: https://github.com/HeitorLouzeiro/contact-django/issues
-[license-shield]: https://img.shields.io/github/license/HeitorLouzeiro/contact-django.svg?style=for-the-badge
-[license-url]: https://github.com/HeitorLouzeiro/contact-django/blob/master/license
+[contributors-shield]: https://img.shields.io/github/contributors/HeitorLouzeiro/portifolio.svg?style=for-the-badge
+[contributors-url]: https://github.com/HeitorLouzeiro/portifolio/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/HeitorLouzeiro/portifolio.svg?style=for-the-badge
+[forks-url]: https://github.com/HeitorLouzeiro/portifolio/network/members
+[stars-shield]: https://img.shields.io/github/stars/HeitorLouzeiro/portifolio.svg?style=for-the-badge
+[stars-url]: https://github.com/HeitorLouzeiro/portifolio/stargazers
+[issues-shield]: https://img.shields.io/github/issues/HeitorLouzeiro/portifolio.svg?style=for-the-badge
+[issues-url]: https://github.com/HeitorLouzeiro/portifolio/issues
+[license-shield]: https://img.shields.io/github/license/HeitorLouzeiro/portifolio.svg?style=for-the-badge
+[license-url]: https://github.com/HeitorLouzeiro/portifolio/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/heitor-louzeiro
 
