@@ -377,8 +377,8 @@ Project Link: [https://github.com/HeitorLouzeiro/portifolio](https://github.com/
 [Bootstrap-url]: https://getbootstrap.com
 
 [HTML]:https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
-[HTML-url]: https://github.com/HeitorLouzeiro/contact-django/#
+[HTML-url]: https://github.com/HeitorLouzeiro/portifolio/#
 
 [CSS]: 	https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white
-[CSS-url]: https://github.com/HeitorLouzeiro/contact-django/#
+[CSS-url]: https://github.com/HeitorLouzeiro/portifolio/#
 
