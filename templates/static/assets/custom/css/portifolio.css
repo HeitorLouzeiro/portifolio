@@ -386,6 +386,7 @@ input.btn.contact:hover{
 
 .mini-card{
     display: inline-grid;
+    padding: 0.5rem;
 }
 .plus-card{
     height: 5rem;
@@ -411,7 +412,9 @@ input.btn.contact:hover{
     color:var(--green);
     box-shadow: var(--box-shadow-inset);
 }
-
+.curriculo .share img {
+    height: 100%;
+}
 .modal-img img{
     height: 100%;
     width: 100%;
@@ -592,7 +595,6 @@ input.btn.contact:hover{
     line-height: 5rem;
     box-shadow:var(--box-shadow);
     margin: .5rem;
-    font-size: 2rem;
     color: var(--black);
 }
 
@@ -981,6 +983,18 @@ input.btn.contact:hover{
     .about .row .box-progress .button-card{
         justify-content: space-evenly;
     }
+    #menu-btn,#theme-toggler{
+        height: 7rem;
+        width: 7rem;
+        line-height: 7rem;
+        font-size: 3rem;
+    }
+    .togle-whatsapp{
+        height: 7rem;
+        width: 7rem;
+        font-size: 7rem;
+    } 
+
 
 }
 
