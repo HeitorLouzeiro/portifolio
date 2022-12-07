@@ -993,6 +993,12 @@ input.btn.contact:hover{
         height: 7rem;
         width: 7rem;
         font-size: 7rem;
+    }
+    .home .share a{
+        height: 7rem;
+        width: 7rem;
+        line-height: 7rem;
+        font-size: 3rem;
     } 
 
 
