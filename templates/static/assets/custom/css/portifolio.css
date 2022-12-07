@@ -568,7 +568,6 @@ input.btn.contact:hover{
     display: flex;
     height:2rem;
     padding:.5rem;
-    flex-direction: column;
 }
 
 .curriculo{
@@ -957,7 +956,7 @@ input.btn.contact:hover{
 @media (max-width:991px){
 
     html{
-        font-size: 55%;
+        font-size: medium;
     }
 
     body{
@@ -976,14 +975,16 @@ input.btn.contact:hover{
     #menu-btn{
         display: initial;
     }
+    .about .row .box-progress{
+        display: block;
+    }
+    .about .row .box-progress .button-card{
+        justify-content: space-evenly;
+    }
 
 }
 
 @media (max-width:450px){
-
-    html{
-        font-size: 50%;
-    }
 
     .header{
         width:100%;
@@ -993,4 +994,7 @@ input.btn.contact:hover{
         flex: 50%;
     }
 
+}
+@media(min-width:991px){
+    flex-direction: column;
 }

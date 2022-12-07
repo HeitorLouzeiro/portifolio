@@ -243,15 +243,4 @@ p{
     .btn-pdf{
         display: none;
     }
-    .profileText h2,
-    .contactInfo,
-    .contactInfo ul li span,
-    .contactInfo text,
-    .title,
-    .contactInfo.education h4,
-    .contactInfo.education h4:nth-child(2),
-    i
-    {
-        color:#003147;
-    }
 }
