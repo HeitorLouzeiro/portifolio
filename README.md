@@ -210,7 +210,7 @@ This project was made to improve and disseminate my projects online in a practic
 
     * Windows 
     ```sh
-     venv/scripts/activate
+     venv\scripts\activate
     ```
 
 5. Install as dependencies.
